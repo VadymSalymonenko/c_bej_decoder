@@ -1,0 +1,36 @@
+#IncludeRegexLine: ^[ 	]*[#%][ 	]*(include|import)[ 	]*[<"]([^">]+)([">])
+
+#IncludeRegexScan: ^.*$
+
+#IncludeRegexComplain: ^$
+
+#IncludeRegexTransform: 
+
+/home/pi/entry_test_git/c_bej_decoder/src/bej_decoder.c
+bej_decoder.h
+/home/pi/entry_test_git/c_bej_decoder/src/bej_decoder.h
+stdlib.h
+-
+stdio.h
+-
+stdint.h
+-
+
+/home/pi/entry_test_git/c_bej_decoder/src/bej_decoder.h
+stddef.h
+-
+string.h
+-
+
+/home/pi/entry_test_git/c_bej_decoder/src/encoder_decoder.c
+bej_decoder.h
+/home/pi/entry_test_git/c_bej_decoder/src/bej_decoder.h
+stdio.h
+-
+stdbool.h
+-
+string.h
+-
+stdlib.h
+-
+

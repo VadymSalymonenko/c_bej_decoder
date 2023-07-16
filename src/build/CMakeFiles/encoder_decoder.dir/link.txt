@@ -1,0 +1,1 @@
+/usr/bin/cc CMakeFiles/encoder_decoder.dir/encoder_decoder.c.o CMakeFiles/encoder_decoder.dir/bej_decoder.c.o -o encoder_decoder 

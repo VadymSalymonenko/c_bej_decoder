@@ -1,0 +1,4 @@
+/home/pi/entry_test_git/c_bej_decoder/src/build/CMakeFiles/edit_cache.dir
+/home/pi/entry_test_git/c_bej_decoder/src/build/CMakeFiles/run.dir
+/home/pi/entry_test_git/c_bej_decoder/src/build/CMakeFiles/rebuild_cache.dir
+/home/pi/entry_test_git/c_bej_decoder/src/build/CMakeFiles/encoder_decoder.dir

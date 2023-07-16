@@ -6,6 +6,9 @@
 		3200,
 		3500
 	],
+	"LogicalSizeMiB" : 50,
+	"VolatileSizeMiB" : 12,
 	"DataWidthBits" : 64,
-	"SpareDeviceCount" : 100
+	"SpareDeviceCount" : 100,
+	"Description" : "newModule"
 }
