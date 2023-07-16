@@ -1,0 +1,46 @@
+{
+    "$id": "http://redfish.dmtf.org/schemas/v1/PCIeFunction.json",
+    "$ref": "#/definitions/PCIeFunction",
+    "$schema": "http://redfish.dmtf.org/schemas/v1/redfish-schema-v1.json",
+    "copyright": "Copyright 2014-2023 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright",
+    "definitions": {
+        "PCIeFunction": {
+            "anyOf": [
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/odata-v4.json#/definitions/idRef"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/PCIeFunction.v1_0_7.json#/definitions/PCIeFunction"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/PCIeFunction.v1_1_5.json#/definitions/PCIeFunction"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/PCIeFunction.v1_2_4.json#/definitions/PCIeFunction"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/PCIeFunction.v1_3_1.json#/definitions/PCIeFunction"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/PCIeFunction.v1_4_1.json#/definitions/PCIeFunction"
+                },
+                {
+                    "$ref": "http://redfish.dmtf.org/schemas/v1/PCIeFunction.v1_5_0.json#/definitions/PCIeFunction"
+                }
+            ],
+            "deletable": false,
+            "description": "The PCIeFunction schema describes the properties of a PCIe function that is attached to a system.",
+            "insertable": false,
+            "longDescription": "This resource shall represent a PCIe function in a Redfish implementation.",
+            "updatable": true,
+            "uris": [
+                "/redfish/v1/Chassis/{ChassisId}/PCIeDevices/{PCIeDeviceId}/PCIeFunctions/{PCIeFunctionId}",
+                "/redfish/v1/Systems/{ComputerSystemId}/PCIeDevices/{PCIeDeviceId}/PCIeFunctions/{PCIeFunctionId}",
+                "/redfish/v1/CompositionService/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/PCIeDevices/{PCIeDeviceId}/PCIeFunctions/{PCIeFunctionId}",
+                "/redfish/v1/ResourceBlocks/{ResourceBlockId}/Systems/{ComputerSystemId}/PCIeDevices/{PCIeDeviceId}/PCIeFunctions/{PCIeFunctionId}"
+            ]
+        }
+    },
+    "owningEntity": "DMTF",
+    "title": "#PCIeFunction.PCIeFunction"
+}

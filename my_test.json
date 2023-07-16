@@ -1,0 +1,11 @@
+{
+	"DeviceID" : "test",
+	"CapacityMiB" : 800,
+	"AllowedSpeedsMHz" : [
+		2400,
+		3200,
+		3500
+	],
+	"DataWidthBits" : 64,
+	"SpareDeviceCount" : 100
+}

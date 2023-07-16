@@ -1,0 +1,42 @@
+components:
+  schemas:
+    EventDestination_EventDestination:
+      anyOf:
+      - $ref: http://redfish.dmtf.org/schemas/v1/odata-v4.yaml#/components/schemas/odata-v4_idRef
+      - $ref: http://redfish.dmtf.org/schemas/v1/EventDestination.v1_0_11.yaml#/components/schemas/EventDestination_v1_0_11_EventDestination
+      - $ref: http://redfish.dmtf.org/schemas/v1/EventDestination.v1_1_11.yaml#/components/schemas/EventDestination_v1_1_11_EventDestination
+      - $ref: http://redfish.dmtf.org/schemas/v1/EventDestination.v1_2_9.yaml#/components/schemas/EventDestination_v1_2_9_EventDestination
+      - $ref: http://redfish.dmtf.org/schemas/v1/EventDestination.v1_3_7.yaml#/components/schemas/EventDestination_v1_3_7_EventDestination
+      - $ref: http://redfish.dmtf.org/schemas/v1/EventDestination.v1_4_6.yaml#/components/schemas/EventDestination_v1_4_6_EventDestination
+      - $ref: http://redfish.dmtf.org/schemas/v1/EventDestination.v1_5_5.yaml#/components/schemas/EventDestination_v1_5_5_EventDestination
+      - $ref: http://redfish.dmtf.org/schemas/v1/EventDestination.v1_6_6.yaml#/components/schemas/EventDestination_v1_6_6_EventDestination
+      - $ref: http://redfish.dmtf.org/schemas/v1/EventDestination.v1_7_6.yaml#/components/schemas/EventDestination_v1_7_6_EventDestination
+      - $ref: http://redfish.dmtf.org/schemas/v1/EventDestination.v1_8_6.yaml#/components/schemas/EventDestination_v1_8_6_EventDestination
+      - $ref: http://redfish.dmtf.org/schemas/v1/EventDestination.v1_9_7.yaml#/components/schemas/EventDestination_v1_9_7_EventDestination
+      - $ref: http://redfish.dmtf.org/schemas/v1/EventDestination.v1_10_6.yaml#/components/schemas/EventDestination_v1_10_6_EventDestination
+      - $ref: http://redfish.dmtf.org/schemas/v1/EventDestination.v1_11_4.yaml#/components/schemas/EventDestination_v1_11_4_EventDestination
+      - $ref: http://redfish.dmtf.org/schemas/v1/EventDestination.v1_12_2.yaml#/components/schemas/EventDestination_v1_12_2_EventDestination
+      - $ref: http://redfish.dmtf.org/schemas/v1/EventDestination.v1_13_1.yaml#/components/schemas/EventDestination_v1_13_1_EventDestination
+      description: The EventDestination schema defines the target of an event subscription,
+        including the event types and context to provide to the target in the event
+        payload.
+      x-longDescription: This resource shall represent the target of an event subscription,
+        including the event types and context to provide to the target in the event
+        payload.
+    EventDestination_EventFormatType:
+      enum:
+      - Event
+      - MetricReport
+      type: string
+      x-enumDescriptions:
+        Event: The subscription destination receives an event payload.
+        MetricReport: The subscription destination receives a metric report.
+      x-enumLongDescriptions:
+        Event: The subscription destination shall receive an event payload as defined
+          by the value of the Protocol property.
+        MetricReport: The subscription destination shall receive a metric report payload
+          as defined by the value of the Protocol property.
+      x-versionAdded: v1_4_0
+title: '#EventDestination.EventDestination'
+x-copyright: Copyright 2014-2023 DMTF. For the full DMTF copyright policy, see http://www.dmtf.org/about/policies/copyright
+x-owningEntity: DMTF
