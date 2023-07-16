@@ -1,52 +1,64 @@
 \@ifundefined {etoctocstyle}{\let \etoc@startlocaltoc \@gobble \let \etoc@settocdepth \@gobble \let \etoc@depthtag \@gobble \let \etoc@setlocaltop \@gobble }{}
-\contentsline {chapter}{\numberline {1}Data Structure Index}{1}{chapter.1}%
-\contentsline {section}{\numberline {1.1}Data Structures}{1}{section.1.1}%
-\contentsline {chapter}{\numberline {2}File Index}{3}{chapter.2}%
-\contentsline {section}{\numberline {2.1}File List}{3}{section.2.1}%
-\contentsline {chapter}{\numberline {3}Data Structure Documentation}{5}{chapter.3}%
-\contentsline {section}{\numberline {3.1}arguments Struct Reference}{5}{section.3.1}%
-\contentsline {subsection}{\numberline {3.1.1}Detailed Description}{5}{subsection.3.1.1}%
-\contentsline {subsection}{\numberline {3.1.2}Field Documentation}{6}{subsection.3.1.2}%
-\contentsline {subsubsection}{\numberline {3.1.2.1}annotation\_dictionary}{6}{subsubsection.3.1.2.1}%
-\contentsline {subsubsection}{\numberline {3.1.2.2}bej\_encoded\_file}{6}{subsubsection.3.1.2.2}%
-\contentsline {subsubsection}{\numberline {3.1.2.3}bej\_output\_file}{6}{subsubsection.3.1.2.3}%
-\contentsline {subsubsection}{\numberline {3.1.2.4}json\_file}{6}{subsubsection.3.1.2.4}%
-\contentsline {subsubsection}{\numberline {3.1.2.5}operation}{6}{subsubsection.3.1.2.5}%
-\contentsline {subsubsection}{\numberline {3.1.2.6}pdr\_map\_file\_decode}{7}{subsubsection.3.1.2.6}%
-\contentsline {subsubsection}{\numberline {3.1.2.7}pdr\_map\_file\_encode}{7}{subsubsection.3.1.2.7}%
-\contentsline {subsubsection}{\numberline {3.1.2.8}schema\_dictionary}{7}{subsubsection.3.1.2.8}%
-\contentsline {subsubsection}{\numberline {3.1.2.9}silent}{7}{subsubsection.3.1.2.9}%
-\contentsline {subsubsection}{\numberline {3.1.2.10}verbose}{7}{subsubsection.3.1.2.10}%
-\contentsline {section}{\numberline {3.2}bej\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}node Struct Reference}{7}{section.3.2}%
-\contentsline {subsection}{\numberline {3.2.1}Detailed Description}{8}{subsection.3.2.1}%
-\contentsline {subsection}{\numberline {3.2.2}Field Documentation}{8}{subsection.3.2.2}%
-\contentsline {subsubsection}{\numberline {3.2.2.1}count}{8}{subsubsection.3.2.2.1}%
-\contentsline {subsubsection}{\numberline {3.2.2.2}dictionary\_type}{8}{subsubsection.3.2.2.2}%
-\contentsline {subsubsection}{\numberline {3.2.2.3}format}{8}{subsubsection.3.2.2.3}%
-\contentsline {subsubsection}{\numberline {3.2.2.4}length}{9}{subsubsection.3.2.2.4}%
-\contentsline {subsubsection}{\numberline {3.2.2.5}sequence}{9}{subsubsection.3.2.2.5}%
-\contentsline {subsubsection}{\numberline {3.2.2.6}value}{9}{subsubsection.3.2.2.6}%
-\contentsline {section}{\numberline {3.3}dynamic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}string Struct Reference}{9}{section.3.3}%
-\contentsline {subsection}{\numberline {3.3.1}Detailed Description}{9}{subsection.3.3.1}%
-\contentsline {subsection}{\numberline {3.3.2}Field Documentation}{10}{subsection.3.3.2}%
-\contentsline {subsubsection}{\numberline {3.3.2.1}capacity}{10}{subsubsection.3.3.2.1}%
-\contentsline {subsubsection}{\numberline {3.3.2.2}data}{10}{subsubsection.3.3.2.2}%
-\contentsline {subsubsection}{\numberline {3.3.2.3}length}{10}{subsubsection.3.3.2.3}%
-\contentsline {chapter}{\numberline {4}File Documentation}{11}{chapter.4}%
-\contentsline {section}{\numberline {4.1}src/bej\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}decoder.c File Reference}{11}{section.4.1}%
-\contentsline {section}{\numberline {4.2}src/bej\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}decoder.h File Reference}{11}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Macro Definition Documentation}{12}{subsection.4.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.1.1}CAPACITY\_INCREASE\_STEP}{12}{subsubsection.4.2.1.1}%
-\contentsline {subsubsection}{\numberline {4.2.1.2}INITIAL\_CAPACITY}{12}{subsubsection.4.2.1.2}%
-\contentsline {subsection}{\numberline {4.2.2}Enumeration Type Documentation}{12}{subsection.4.2.2}%
-\contentsline {subsubsection}{\numberline {4.2.2.1}bej\_node\_to\_str\_types}{12}{subsubsection.4.2.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.2.2}data\_types}{12}{subsubsection.4.2.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Function Documentation}{13}{subsection.4.2.3}%
-\contentsline {subsubsection}{\numberline {4.2.3.1}decode\_bej()}{13}{subsubsection.4.2.3.1}%
-\contentsline {section}{\numberline {4.3}src/encoder\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}decoder.c File Reference}{13}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Function Documentation}{14}{subsection.4.3.1}%
-\contentsline {subsubsection}{\numberline {4.3.1.1}append\_to\_filename()}{14}{subsubsection.4.3.1.1}%
-\contentsline {subsubsection}{\numberline {4.3.1.2}main()}{15}{subsubsection.4.3.1.2}%
-\contentsline {subsubsection}{\numberline {4.3.1.3}parse\_arguments()}{15}{subsubsection.4.3.1.3}%
-\contentsline {subsubsection}{\numberline {4.3.1.4}read\_file()}{15}{subsubsection.4.3.1.4}%
-\contentsline {subsubsection}{\numberline {4.3.1.5}write\_to\_file()}{16}{subsubsection.4.3.1.5}%
+\contentsline {chapter}{\numberline {1}Test List}{1}{chapter.1}%
+\contentsline {chapter}{\numberline {2}Data Structure Index}{3}{chapter.2}%
+\contentsline {section}{\numberline {2.1}Data Structures}{3}{section.2.1}%
+\contentsline {chapter}{\numberline {3}File Index}{5}{chapter.3}%
+\contentsline {section}{\numberline {3.1}File List}{5}{section.3.1}%
+\contentsline {chapter}{\numberline {4}Data Structure Documentation}{7}{chapter.4}%
+\contentsline {section}{\numberline {4.1}arguments Struct Reference}{7}{section.4.1}%
+\contentsline {subsection}{\numberline {4.1.1}Detailed Description}{7}{subsection.4.1.1}%
+\contentsline {subsection}{\numberline {4.1.2}Field Documentation}{8}{subsection.4.1.2}%
+\contentsline {subsubsection}{\numberline {4.1.2.1}annotation\_dictionary}{8}{subsubsection.4.1.2.1}%
+\contentsline {subsubsection}{\numberline {4.1.2.2}bej\_encoded\_file}{8}{subsubsection.4.1.2.2}%
+\contentsline {subsubsection}{\numberline {4.1.2.3}bej\_output\_file}{8}{subsubsection.4.1.2.3}%
+\contentsline {subsubsection}{\numberline {4.1.2.4}json\_file}{8}{subsubsection.4.1.2.4}%
+\contentsline {subsubsection}{\numberline {4.1.2.5}operation}{8}{subsubsection.4.1.2.5}%
+\contentsline {subsubsection}{\numberline {4.1.2.6}pdr\_map\_file\_decode}{9}{subsubsection.4.1.2.6}%
+\contentsline {subsubsection}{\numberline {4.1.2.7}pdr\_map\_file\_encode}{9}{subsubsection.4.1.2.7}%
+\contentsline {subsubsection}{\numberline {4.1.2.8}schema\_dictionary}{9}{subsubsection.4.1.2.8}%
+\contentsline {subsubsection}{\numberline {4.1.2.9}silent}{9}{subsubsection.4.1.2.9}%
+\contentsline {subsubsection}{\numberline {4.1.2.10}verbose}{9}{subsubsection.4.1.2.10}%
+\contentsline {section}{\numberline {4.2}bej\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}node Struct Reference}{9}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Detailed Description}{10}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Field Documentation}{10}{subsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.1}count}{10}{subsubsection.4.2.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2.2}dictionary\_type}{10}{subsubsection.4.2.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.3}format}{10}{subsubsection.4.2.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.2.4}length}{11}{subsubsection.4.2.2.4}%
+\contentsline {subsubsection}{\numberline {4.2.2.5}sequence}{11}{subsubsection.4.2.2.5}%
+\contentsline {subsubsection}{\numberline {4.2.2.6}value}{11}{subsubsection.4.2.2.6}%
+\contentsline {section}{\numberline {4.3}dynamic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}string Struct Reference}{11}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Detailed Description}{11}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Field Documentation}{12}{subsection.4.3.2}%
+\contentsline {subsubsection}{\numberline {4.3.2.1}capacity}{12}{subsubsection.4.3.2.1}%
+\contentsline {subsubsection}{\numberline {4.3.2.2}data}{12}{subsubsection.4.3.2.2}%
+\contentsline {subsubsection}{\numberline {4.3.2.3}length}{12}{subsubsection.4.3.2.3}%
+\contentsline {chapter}{\numberline {5}File Documentation}{13}{chapter.5}%
+\contentsline {section}{\numberline {5.1}src/bej\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}decoder.c File Reference}{13}{section.5.1}%
+\contentsline {section}{\numberline {5.2}src/bej\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}decoder.h File Reference}{13}{section.5.2}%
+\contentsline {subsection}{\numberline {5.2.1}Macro Definition Documentation}{14}{subsection.5.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.1.1}CAPACITY\_INCREASE\_STEP}{14}{subsubsection.5.2.1.1}%
+\contentsline {subsubsection}{\numberline {5.2.1.2}INITIAL\_CAPACITY}{14}{subsubsection.5.2.1.2}%
+\contentsline {subsection}{\numberline {5.2.2}Enumeration Type Documentation}{14}{subsection.5.2.2}%
+\contentsline {subsubsection}{\numberline {5.2.2.1}bej\_node\_to\_str\_types}{14}{subsubsection.5.2.2.1}%
+\contentsline {subsubsection}{\numberline {5.2.2.2}data\_types}{14}{subsubsection.5.2.2.2}%
+\contentsline {subsection}{\numberline {5.2.3}Function Documentation}{15}{subsection.5.2.3}%
+\contentsline {subsubsection}{\numberline {5.2.3.1}decode\_bej()}{15}{subsubsection.5.2.3.1}%
+\contentsline {section}{\numberline {5.3}src/encoder\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}decoder.c File Reference}{15}{section.5.3}%
+\contentsline {subsection}{\numberline {5.3.1}Function Documentation}{16}{subsection.5.3.1}%
+\contentsline {subsubsection}{\numberline {5.3.1.1}append\_to\_filename()}{16}{subsubsection.5.3.1.1}%
+\contentsline {subsubsection}{\numberline {5.3.1.2}main()}{17}{subsubsection.5.3.1.2}%
+\contentsline {subsubsection}{\numberline {5.3.1.3}parse\_arguments()}{17}{subsubsection.5.3.1.3}%
+\contentsline {subsubsection}{\numberline {5.3.1.4}read\_file()}{17}{subsubsection.5.3.1.4}%
+\contentsline {subsubsection}{\numberline {5.3.1.5}write\_to\_file()}{18}{subsubsection.5.3.1.5}%
+\contentsline {section}{\numberline {5.4}src/test/decoder\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}test.cpp File Reference}{18}{section.5.4}%
+\contentsline {subsection}{\numberline {5.4.1}Macro Definition Documentation}{19}{subsection.5.4.1}%
+\contentsline {subsubsection}{\numberline {5.4.1.1}TESTING}{19}{subsubsection.5.4.1.1}%
+\contentsline {subsection}{\numberline {5.4.2}Function Documentation}{19}{subsection.5.4.2}%
+\contentsline {subsubsection}{\numberline {5.4.2.1}hex\_to\_bytes()}{19}{subsubsection.5.4.2.1}%
+\contentsline {subsubsection}{\numberline {5.4.2.2}main()}{20}{subsubsection.5.4.2.2}%
+\contentsline {subsubsection}{\numberline {5.4.2.3}TEST()\hspace {0.1cm}{\footnotesize \ttfamily [1/5]}}{20}{subsubsection.5.4.2.3}%
+\contentsline {subsubsection}{\numberline {5.4.2.4}TEST()\hspace {0.1cm}{\footnotesize \ttfamily [2/5]}}{20}{subsubsection.5.4.2.4}%
+\contentsline {subsubsection}{\numberline {5.4.2.5}TEST()\hspace {0.1cm}{\footnotesize \ttfamily [3/5]}}{20}{subsubsection.5.4.2.5}%
+\contentsline {subsubsection}{\numberline {5.4.2.6}TEST()\hspace {0.1cm}{\footnotesize \ttfamily [4/5]}}{21}{subsubsection.5.4.2.6}%
+\contentsline {subsubsection}{\numberline {5.4.2.7}TEST()\hspace {0.1cm}{\footnotesize \ttfamily [5/5]}}{21}{subsubsection.5.4.2.7}%

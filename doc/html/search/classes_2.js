@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['dynamic_5fstring_61',['dynamic_string',['../structdynamic__string.html',1,'']]]
+  ['dynamic_5fstring_66',['dynamic_string',['../structdynamic__string.html',1,'']]]
 ];

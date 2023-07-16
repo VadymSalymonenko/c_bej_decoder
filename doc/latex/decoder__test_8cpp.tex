@@ -1,0 +1,135 @@
+\hypertarget{decoder__test_8cpp}{}\doxysection{src/test/decoder\+\_\+test.cpp File Reference}
+\label{decoder__test_8cpp}\index{src/test/decoder\_test.cpp@{src/test/decoder\_test.cpp}}
+{\ttfamily \#include \char`\"{}gtest/gtest.\+h\char`\"{}}\newline
+{\ttfamily \#include \char`\"{}../bej\+\_\+decoder.\+h\char`\"{}}\newline
+Include dependency graph for decoder\+\_\+test.\+cpp\+:
+% FIG 0
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{decoder__test_8cpp_a68df6a1c0e7634ba32a66f9f01d4cb6f}{TESTING}}
+\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+unsigned char $\ast$ \mbox{\hyperlink{decoder__test_8cpp_a16240596a4fbfb276b89c199d25f28f8}{hex\+\_\+to\+\_\+bytes}} (const char $\ast$hex)
+\begin{DoxyCompactList}\small\item\em Converts a string of hexadecimal digits into an array of bytes. This function iterates through pairs of characters in the input string, converting each pair from a hexadecimal digit to a byte value using sscanf, and storing the resulting bytes in a dynamically allocated array. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{decoder__test_8cpp_a0f118e4d6c99b3fe374147e685dc44d4}{TEST}} (parse\+\_\+\+SFLV\+\_\+init\+\_\+test, returns\+\_\+correct\+\_\+format)
+\begin{DoxyCompactList}\small\item\em This test case checks the function \textquotesingle{}parse\+\_\+sflv\+\_\+init\textquotesingle{} for the correct decoding of format, count, sequence, and dictionary type fields. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{decoder__test_8cpp_ac89a579d637fced036c1d8e17777c942}{TEST}} (parse\+\_\+\+SFLV\+\_\+integer\+\_\+node, returns\+\_\+correct\+\_\+format)
+\begin{DoxyCompactList}\small\item\em This test case checks the function \textquotesingle{}parse\+\_\+sflv\+\_\+init\textquotesingle{} for the correct decoding of format, count, sequence, and dictionary type fields. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{decoder__test_8cpp_a01506ecf54bd0b4933c02d7ada569a02}{TEST}} (append\+\_\+string\+\_\+test, multiple\+\_\+appends)
+\begin{DoxyCompactList}\small\item\em This test case checks the \textquotesingle{}append\+\_\+string\textquotesingle{} function for multiple string appends. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{decoder__test_8cpp_a04acd74e44d3666f6c542a3c0564f479}{TEST}} (read\+\_\+str\+\_\+test, simple\+\_\+string)
+\begin{DoxyCompactList}\small\item\em This test case checks the function \textquotesingle{}read\+\_\+str\+\_\+const\+\_\+ptr\textquotesingle{} for a simple string. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{decoder__test_8cpp_ae7d4a4efe48ee75b80406e0ceb71e9b6}{TEST}} (read\+\_\+str\+\_\+test, empty\+\_\+string)
+\begin{DoxyCompactList}\small\item\em This test case checks the function \textquotesingle{}read\+\_\+str\+\_\+const\+\_\+ptr\textquotesingle{} for an empty string. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{decoder__test_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}{main}} (int argc, char $\ast$$\ast$argv)
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{decoder__test_8cpp_a68df6a1c0e7634ba32a66f9f01d4cb6f}\label{decoder__test_8cpp_a68df6a1c0e7634ba32a66f9f01d4cb6f}} 
+\index{decoder\_test.cpp@{decoder\_test.cpp}!TESTING@{TESTING}}
+\index{TESTING@{TESTING}!decoder\_test.cpp@{decoder\_test.cpp}}
+\doxysubsubsection{\texorpdfstring{TESTING}{TESTING}}
+{\footnotesize\ttfamily \#define TESTING}
+
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{decoder__test_8cpp_a16240596a4fbfb276b89c199d25f28f8}\label{decoder__test_8cpp_a16240596a4fbfb276b89c199d25f28f8}} 
+\index{decoder\_test.cpp@{decoder\_test.cpp}!hex\_to\_bytes@{hex\_to\_bytes}}
+\index{hex\_to\_bytes@{hex\_to\_bytes}!decoder\_test.cpp@{decoder\_test.cpp}}
+\doxysubsubsection{\texorpdfstring{hex\_to\_bytes()}{hex\_to\_bytes()}}
+{\footnotesize\ttfamily unsigned char$\ast$ hex\+\_\+to\+\_\+bytes (\begin{DoxyParamCaption}\item[{const char $\ast$}]{hex }\end{DoxyParamCaption})}
+
+
+
+Converts a string of hexadecimal digits into an array of bytes. This function iterates through pairs of characters in the input string, converting each pair from a hexadecimal digit to a byte value using sscanf, and storing the resulting bytes in a dynamically allocated array. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em hex} & A pointer to a null-\/terminated string containing hexadecimal digits. It is assumed that the string length is even and the string contains only valid hexadecimal digits (0-\/9, A-\/F, a-\/f).\\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the newly allocated array of bytes. The length of the array is half the length of the input string. The caller is responsible for freeing this memory when it is no longer needed. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{decoder__test_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}\label{decoder__test_8cpp_a3c04138a5bfe5d72780bb7e82a18e627}} 
+\index{decoder\_test.cpp@{decoder\_test.cpp}!main@{main}}
+\index{main@{main}!decoder\_test.cpp@{decoder\_test.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
+
+\mbox{\Hypertarget{decoder__test_8cpp_a01506ecf54bd0b4933c02d7ada569a02}\label{decoder__test_8cpp_a01506ecf54bd0b4933c02d7ada569a02}} 
+\index{decoder\_test.cpp@{decoder\_test.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!decoder\_test.cpp@{decoder\_test.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [1/5]}}
+{\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{append\+\_\+string\+\_\+test}]{,  }\item[{multiple\+\_\+appends}]{ }\end{DoxyParamCaption})}
+
+
+
+This test case checks the \textquotesingle{}append\+\_\+string\textquotesingle{} function for multiple string appends. 
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000003}{Test}}]append\+\_\+string\+\_\+test\+\_\+multiple\+\_\+appends \end{DoxyRefDesc}
+
+
+An initial dynamic string is created with \textquotesingle{}create\+\_\+dynamic\+\_\+string\textquotesingle{} and then appended with multiple strings using the \textquotesingle{}append\+\_\+string\textquotesingle{} function. After each append operation, the test checks if the string has been correctly appended and its length has been updated correctly. The test also checks if the overall string is as expected after each append operation. If the appended string and its length match the expected string and length, the test passes. \mbox{\Hypertarget{decoder__test_8cpp_a0f118e4d6c99b3fe374147e685dc44d4}\label{decoder__test_8cpp_a0f118e4d6c99b3fe374147e685dc44d4}} 
+\index{decoder\_test.cpp@{decoder\_test.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!decoder\_test.cpp@{decoder\_test.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [2/5]}}
+{\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{parse\+\_\+\+SFLV\+\_\+init\+\_\+test}]{,  }\item[{returns\+\_\+correct\+\_\+format}]{ }\end{DoxyParamCaption})}
+
+
+
+This test case checks the function \textquotesingle{}parse\+\_\+sflv\+\_\+init\textquotesingle{} for the correct decoding of format, count, sequence, and dictionary type fields. 
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000001}{Test}}]parse\+\_\+\+SFLV\+\_\+init\+\_\+test\+\_\+returns\+\_\+correct\+\_\+format \end{DoxyRefDesc}
+
+
+The input data is a hexadecimal string representing an array of bytes. The \textquotesingle{}hex\+\_\+to\+\_\+bytes\textquotesingle{} function is used to convert this string into an array of bytes. The function \textquotesingle{}parse\+\_\+sflv\+\_\+init\textquotesingle{} is then expected to parse this byte array into a \textquotesingle{}\mbox{\hyperlink{structbej__node}{bej\+\_\+node}}\textquotesingle{} structure. The test checks the \textquotesingle{}format\textquotesingle{}, \textquotesingle{}count\textquotesingle{}, \textquotesingle{}sequence\textquotesingle{}, and \textquotesingle{}dictionary\+\_\+type\textquotesingle{} fields of the returned structure, comparing them to expected values. If they match, the test passes. \mbox{\Hypertarget{decoder__test_8cpp_ac89a579d637fced036c1d8e17777c942}\label{decoder__test_8cpp_ac89a579d637fced036c1d8e17777c942}} 
+\index{decoder\_test.cpp@{decoder\_test.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!decoder\_test.cpp@{decoder\_test.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [3/5]}}
+{\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{parse\+\_\+\+SFLV\+\_\+integer\+\_\+node}]{,  }\item[{returns\+\_\+correct\+\_\+format}]{ }\end{DoxyParamCaption})}
+
+
+
+This test case checks the function \textquotesingle{}parse\+\_\+sflv\+\_\+init\textquotesingle{} for the correct decoding of format, count, sequence, and dictionary type fields. 
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000002}{Test}}]parse\+\_\+\+SFLV\+\_\+integer\+\_\+node\+\_\+returns\+\_\+correct\+\_\+format \end{DoxyRefDesc}
+
+
+The input data is a hexadecimal string representing an array of bytes. The function \textquotesingle{}parse\+\_\+sflv\+\_\+init\textquotesingle{} is expected to parse this byte array into a \textquotesingle{}\mbox{\hyperlink{structbej__node}{bej\+\_\+node}}\textquotesingle{} structure. The test checks the \textquotesingle{}format\textquotesingle{}, \textquotesingle{}count\textquotesingle{}, \textquotesingle{}sequence\textquotesingle{}, and \textquotesingle{}dictionary\+\_\+type\textquotesingle{} fields of the second element of the returned structure, comparing them to expected values. If they match, the test passes. \mbox{\Hypertarget{decoder__test_8cpp_ae7d4a4efe48ee75b80406e0ceb71e9b6}\label{decoder__test_8cpp_ae7d4a4efe48ee75b80406e0ceb71e9b6}} 
+\index{decoder\_test.cpp@{decoder\_test.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!decoder\_test.cpp@{decoder\_test.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [4/5]}}
+{\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{read\+\_\+str\+\_\+test}]{,  }\item[{empty\+\_\+string}]{ }\end{DoxyParamCaption})}
+
+
+
+This test case checks the function \textquotesingle{}read\+\_\+str\+\_\+const\+\_\+ptr\textquotesingle{} for an empty string. 
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000005}{Test}}]read\+\_\+str\+\_\+test\+\_\+empty\+\_\+string \end{DoxyRefDesc}
+
+
+The input data is an empty string, encoded as a one-\/element array of unsigned char containing a null character. The expected output is an empty string. The function is expected to correctly decode the input data and return an empty string. The returned string is compared to the expected output using the \textquotesingle{}ASSERT\+\_\+\+STREQ\textquotesingle{} macro. If they match, the test passes. \mbox{\Hypertarget{decoder__test_8cpp_a04acd74e44d3666f6c542a3c0564f479}\label{decoder__test_8cpp_a04acd74e44d3666f6c542a3c0564f479}} 
+\index{decoder\_test.cpp@{decoder\_test.cpp}!TEST@{TEST}}
+\index{TEST@{TEST}!decoder\_test.cpp@{decoder\_test.cpp}}
+\doxysubsubsection{\texorpdfstring{TEST()}{TEST()}\hspace{0.1cm}{\footnotesize\ttfamily [5/5]}}
+{\footnotesize\ttfamily TEST (\begin{DoxyParamCaption}\item[{read\+\_\+str\+\_\+test}]{,  }\item[{simple\+\_\+string}]{ }\end{DoxyParamCaption})}
+
+
+
+This test case checks the function \textquotesingle{}read\+\_\+str\+\_\+const\+\_\+ptr\textquotesingle{} for a simple string. 
+
+\begin{DoxyRefDesc}{Test}
+\item[\mbox{\hyperlink{test__test000004}{Test}}]read\+\_\+str\+\_\+test\+\_\+simple\+\_\+string \end{DoxyRefDesc}
+
+
+The input data is the string \char`\"{}\+Hello\char`\"{} encoded as an array of unsigned char. The expected output is the original string \char`\"{}\+Hello\char`\"{}. The function is expected to correctly decode the input data and return the original string. The returned string is compared to the expected output using the \textquotesingle{}ASSERT\+\_\+\+STREQ\textquotesingle{} macro. If they match, the test passes. 

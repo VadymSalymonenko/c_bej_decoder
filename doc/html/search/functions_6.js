@@ -1,8 +1,4 @@
 var searchData=
 [
-  ['parse_5farguments_78',['parse_arguments',['../encoder__decoder_8c.html#aafff9b49ac279d392def97f8fdb9dc33',1,'encoder_decoder.c']]],
-  ['parse_5fbej_5fnode_5fto_5fstr_79',['parse_bej_node_to_str',['../bej__decoder_8c.html#a11d8ca7465a9dc756c33c2684f4807bc',1,'bej_decoder.c']]],
-  ['parse_5fbej_5fnode_5fto_5fstr_5frecursion_80',['parse_bej_node_to_str_recursion',['../bej__decoder_8c.html#a64ac21e49ede2df99d05d62778013958',1,'bej_decoder.c']]],
-  ['parse_5fsflv_5finit_81',['parse_sflv_init',['../bej__decoder_8c.html#ad983441c699b8261b6bc1413a0cd0184',1,'bej_decoder.c']]],
-  ['parse_5fsflv_5frecursion_82',['parse_sflv_recursion',['../bej__decoder_8c.html#a512b0358b77851241f832bcbc707103b',1,'bej_decoder.c']]]
+  ['main_84',['main',['../encoder__decoder_8c.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main(int argc, char *argv[]):&#160;encoder_decoder.c'],['../decoder__test_8cpp.html#a3c04138a5bfe5d72780bb7e82a18e627',1,'main(int argc, char **argv):&#160;decoder_test.cpp']]]
 ];

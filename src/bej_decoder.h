@@ -1,6 +1,3 @@
-#ifndef BEJ_DECODER_H
-#define BEJ_DECODER_H
-
 #include <stddef.h>
 #include <string.h>
 
@@ -60,5 +57,36 @@ struct dynamic_string {
 struct dynamic_string* decode_bej(unsigned char *data, size_t data_len, 
 								unsigned char *schema_dictionary, size_t schema_dictionary_len, 
 								const unsigned char *annotation_dictionary, size_t annotation_dictionary_len);
-	
+
+#ifdef TESTING
+void advance_ptr(unsigned char** data, int bytes_to_advance);
+int read_int_const_ptr(unsigned char *data, int length);
+char* read_str_const_ptr(unsigned char *data, int length);
+int read_int(unsigned char **data, int length);
+int read_length_and_get_int(unsigned char **data);
+char* read_str(unsigned char **data, int length);
+void allocate_sflv_array(struct bej_node* root);
+void free_sflv_array(struct bej_node* root);
+struct bej_node* parse_sflv_recursion(struct bej_node *parent, unsigned char **data, 
+									size_t data_len);
+struct bej_node* parse_sflv_init(unsigned char *data, size_t data_len);
+struct dynamic_string* create_dynamic_string(void);
+void check_realloc(struct dynamic_string* str, size_t additional_length);
+void append_string(struct dynamic_string* str, const char* append_str);
+void append_char(struct dynamic_string* str, char c);
+char* get_key_from_dictionary (struct bej_node *node, unsigned char *schema_dictionary);
+void add_node_key_to_str(struct bej_node *node, struct dynamic_string* str, 
+						unsigned char *schema_dictionary);
+void add_tab(struct dynamic_string* str, int count);
+void parse_bej_node_to_str_recursion(struct bej_node *node, struct dynamic_string* str, 
+									char parse_type, char recursion_depth, 
+									unsigned char *schema_dictionary);
+void parse_bej_node_to_str(struct bej_node *root, struct dynamic_string* str, 
+							unsigned char *schema_dictionary);
+struct dynamic_string* decode_bej(unsigned char *data, size_t data_len,	unsigned char *schema_dictionary,
+								size_t schema_dictionary_len, const unsigned char *annotation_dictionary, 
+								size_t annotation_dictionary_len);
+
 #endif
+
+

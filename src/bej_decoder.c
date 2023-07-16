@@ -135,7 +135,7 @@ char* read_str(unsigned char **data, int length)
 void allocate_sflv_array(struct bej_node* root)
 {
 	// allocate memory for the array of pointers to structures
-    struct bej_node** array = malloc(root->count * sizeof(struct bej_node*));
+    struct bej_node** array = (struct bej_node**)malloc(root->count * sizeof(struct bej_node*));
 
 	// check whether the memory was successfully allocated
     if (array == NULL) {
@@ -145,7 +145,7 @@ void allocate_sflv_array(struct bej_node* root)
 
     // array initialization
     for (unsigned int i = 0; i < root->count; ++i) {
-        struct bej_node* new_sflv = malloc(sizeof(struct bej_node));
+        struct bej_node* new_sflv = (struct bej_node*)malloc(sizeof(struct bej_node));
 
         if (new_sflv == NULL) {
             fprintf(stderr, "Failed to allocate memory\n");
@@ -201,7 +201,7 @@ struct bej_node* parse_sflv_recursion(struct bej_node *parent, unsigned char **d
 	switch (parent->format) {
 		case INTEGER: 
 		{
-			int *int_ptr = malloc(sizeof(int)); 
+			int *int_ptr = (int*)malloc(sizeof(int)); 
 			*int_ptr = read_int(data,parent->length);
 			parent->value = (void**)int_ptr;				
 			break;
@@ -217,14 +217,14 @@ struct bej_node* parse_sflv_recursion(struct bej_node *parent, unsigned char **d
 	        parent->count = read_length_and_get_int((data));
 			allocate_sflv_array(parent);
 			for (int i = 0; i < parent->count; i++) {
-				parse_sflv_recursion(parent->value[i],data, data_len);
+				parse_sflv_recursion((struct bej_node *)parent->value[i],data, data_len);
 			}
 			break;
 		}
 		case ENUM: 
 		{
 			parent->count = 1;
-			int *int_ptr = malloc(sizeof(int)); 
+			int *int_ptr = (int*)malloc(sizeof(int)); 
 			*int_ptr = read_int(data,parent->length); // TODO: make a function that simply writes several bytes in a direct sequence without the \0 terminator
 			parent->value = (void**)int_ptr;
 			break;
@@ -246,7 +246,7 @@ struct bej_node* parse_sflv_recursion(struct bej_node *parent, unsigned char **d
  */
 struct bej_node* parse_sflv_init(unsigned char *data, size_t data_len)
 {	
-	struct bej_node *root = malloc(sizeof(struct bej_node));
+	struct bej_node *root = (struct bej_node *)malloc(sizeof(struct bej_node));
 	unsigned char **data_ptr = &data;
 	
 	advance_ptr(data_ptr,12);
@@ -259,7 +259,7 @@ struct bej_node* parse_sflv_init(unsigned char *data, size_t data_len)
 	
 	allocate_sflv_array(root);
 	for (int i = 0; i < root->count; i++) {
-		parse_sflv_recursion(root->value[i],data_ptr, data_len);
+		parse_sflv_recursion((struct bej_node *)root->value[i],data_ptr, data_len);
 	}
 	
 	//free(node);
@@ -451,7 +451,8 @@ void parse_bej_node_to_str_recursion(struct bej_node *node, struct dynamic_strin
 				}
 				for (int i = 0; i < node->count; i++) {
 					add_tab(str, recursion_depth);
-					parse_bej_node_to_str_recursion(node->value[i], str, parse_type,recursion_depth, schema_dictionary);
+					parse_bej_node_to_str_recursion((struct bej_node *)node->value[i], str, 
+									parse_type,recursion_depth, schema_dictionary);
 					if(i < node->count-1)append_string(str, ",\n");
 					if(i == node->count-1)append_string(str, "\n");
 				}

@@ -7,9 +7,7 @@ GENERATE_LATEX         = YES
 GENERATE_HTML          = YES
 GENERATE_PDF           = YES
 
-
-INPUT                  = /home/pi/entry_test_git/c_bej_decoder/src
-FILE_PATTERNS          = *.c *.h
-
+INPUT                  = /home/pi/entry_test_git/c_bej_decoder/src /home/pi/entry_test_git/c_bej_decoder/src/test
+FILE_PATTERNS          = *.c *.h *.cpp
 
 EXCLUDE                =
