@@ -1,0 +1,130 @@
+\hypertarget{encoder__decoder_8c}{}\doxysection{src/encoder\+\_\+decoder.c File Reference}
+\label{encoder__decoder_8c}\index{src/encoder\_decoder.c@{src/encoder\_decoder.c}}
+{\ttfamily \#include \char`\"{}bej\+\_\+decoder.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdbool.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+Include dependency graph for encoder\+\_\+decoder.\+c\+:
+% FIG 0
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structarguments}{arguments}}
+\begin{DoxyCompactList}\small\item\em Represents the command line arguments. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structarguments}{arguments}} \mbox{\hyperlink{encoder__decoder_8c_aafff9b49ac279d392def97f8fdb9dc33}{parse\+\_\+arguments}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Parses the command line arguments. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{encoder__decoder_8c_a895fbc449ad2e212048b56e21d70b93b}{read\+\_\+file}} (const char $\ast$file\+\_\+path, unsigned char $\ast$$\ast$buffer)
+\begin{DoxyCompactList}\small\item\em Reads a file into a buffer. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{encoder__decoder_8c_a0b9f4024e2c1f8a131ecb1831d31889e}{append\+\_\+to\+\_\+filename}} (const char $\ast$filename, const char $\ast$suffix)
+\begin{DoxyCompactList}\small\item\em Appends a suffix to the filename. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{encoder__decoder_8c_aa5c2b109616553ffbdf576f75484a243}{write\+\_\+to\+\_\+file}} (struct \mbox{\hyperlink{structdynamic__string}{dynamic\+\_\+string}} $\ast$str, const char $\ast$filename)
+\begin{DoxyCompactList}\small\item\em Writes the content of a dynamic string to a file. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{encoder__decoder_8c_a0ddf1224851353fc92bfbff6f499fa97}{main}} (int argc, char $\ast$argv\mbox{[}$\,$\mbox{]})
+\begin{DoxyCompactList}\small\item\em Main function. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{encoder__decoder_8c_a0b9f4024e2c1f8a131ecb1831d31889e}\label{encoder__decoder_8c_a0b9f4024e2c1f8a131ecb1831d31889e}} 
+\index{encoder\_decoder.c@{encoder\_decoder.c}!append\_to\_filename@{append\_to\_filename}}
+\index{append\_to\_filename@{append\_to\_filename}!encoder\_decoder.c@{encoder\_decoder.c}}
+\doxysubsubsection{\texorpdfstring{append\_to\_filename()}{append\_to\_filename()}}
+{\footnotesize\ttfamily char$\ast$ append\+\_\+to\+\_\+filename (\begin{DoxyParamCaption}\item[{const char $\ast$}]{filename,  }\item[{const char $\ast$}]{suffix }\end{DoxyParamCaption})}
+
+
+
+Appends a suffix to the filename. 
+
+This function appends a given suffix to the filename by replacing the \char`\"{}.\+bin\char`\"{} extension. If the filename does not have a \char`\"{}.\+bin\char`\"{} extension, it returns NULL.
+
+
+\begin{DoxyParams}{Parameters}
+{\em filename} & The original filename. \\
+\hline
+{\em suffix} & The suffix to be appended. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The new filename with the appended suffix. NULL if the filename does not have a \char`\"{}.\+bin\char`\"{} extension. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{encoder__decoder_8c_a0ddf1224851353fc92bfbff6f499fa97}\label{encoder__decoder_8c_a0ddf1224851353fc92bfbff6f499fa97}} 
+\index{encoder\_decoder.c@{encoder\_decoder.c}!main@{main}}
+\index{main@{main}!encoder\_decoder.c@{encoder\_decoder.c}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Main function. 
+
+This function is the entry point of the program. It contains the main algorithm of the program\+: parses the command line arguments, reads binary files, performs BEJ decoding, and writes the decoded message to a file.
+
+
+\begin{DoxyParams}{Parameters}
+{\em argc} & The argument count. \\
+\hline
+{\em argv} & The argument array. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The exit status of the program. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{encoder__decoder_8c_aafff9b49ac279d392def97f8fdb9dc33}\label{encoder__decoder_8c_aafff9b49ac279d392def97f8fdb9dc33}} 
+\index{encoder\_decoder.c@{encoder\_decoder.c}!parse\_arguments@{parse\_arguments}}
+\index{parse\_arguments@{parse\_arguments}!encoder\_decoder.c@{encoder\_decoder.c}}
+\doxysubsubsection{\texorpdfstring{parse\_arguments()}{parse\_arguments()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structarguments}{arguments}} parse\+\_\+arguments (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$}]{argv\mbox{[}$\,$\mbox{]} }\end{DoxyParamCaption})}
+
+
+
+Parses the command line arguments. 
+
+This function goes through the given command line arguments and extracts them into a structured form for easier use. If the provided arguments are invalid, the function will print an error message and exit.
+
+\begin{DoxyReturn}{Returns}
+The parsed arguments. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{encoder__decoder_8c_a895fbc449ad2e212048b56e21d70b93b}\label{encoder__decoder_8c_a895fbc449ad2e212048b56e21d70b93b}} 
+\index{encoder\_decoder.c@{encoder\_decoder.c}!read\_file@{read\_file}}
+\index{read\_file@{read\_file}!encoder\_decoder.c@{encoder\_decoder.c}}
+\doxysubsubsection{\texorpdfstring{read\_file()}{read\_file()}}
+{\footnotesize\ttfamily size\+\_\+t read\+\_\+file (\begin{DoxyParamCaption}\item[{const char $\ast$}]{file\+\_\+path,  }\item[{unsigned char $\ast$$\ast$}]{buffer }\end{DoxyParamCaption})}
+
+
+
+Reads a file into a buffer. 
+
+This function reads a file and places its content into a buffer. It handles file opening, size determination, memory allocation for the buffer, and file reading. If there is any error during these operations, it will print an error message and exit.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+path} & The path to the file. \\
+\hline
+{\em buffer} & The pointer to the buffer to fill. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The size of the file. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{encoder__decoder_8c_aa5c2b109616553ffbdf576f75484a243}\label{encoder__decoder_8c_aa5c2b109616553ffbdf576f75484a243}} 
+\index{encoder\_decoder.c@{encoder\_decoder.c}!write\_to\_file@{write\_to\_file}}
+\index{write\_to\_file@{write\_to\_file}!encoder\_decoder.c@{encoder\_decoder.c}}
+\doxysubsubsection{\texorpdfstring{write\_to\_file()}{write\_to\_file()}}
+{\footnotesize\ttfamily void write\+\_\+to\+\_\+file (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structdynamic__string}{dynamic\+\_\+string}} $\ast$}]{str,  }\item[{const char $\ast$}]{filename }\end{DoxyParamCaption})}
+
+
+
+Writes the content of a dynamic string to a file. 
+
+This function writes the content of a dynamic string to a file with the given filename. If the file cannot be opened, an error message will be printed.
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & The dynamic string to be written to a file. \\
+\hline
+{\em filename} & The name of the file. \\
+\hline
+\end{DoxyParams}

@@ -3,11 +3,25 @@
 #include <stdio.h>
 #include <stdint.h>
 
+/**
+ * @brief Advances the position of a pointer.
+ *
+ * This function advances the position of a pointer by a given number of bytes.
+ *
+ */
 void advance_ptr(unsigned char** data, int bytes_to_advance)
 {
     *data += bytes_to_advance;
 }
 
+/**
+ * @brief Reads an integer from data.
+ *
+ * This function reads an integer of a given length from data. 
+ * The position of the data pointer is not modified.
+ *
+ * @return The integer value read from the data.
+ */
 int read_int_const_ptr(unsigned char *data, int length)
 {
 	int value = 0;
@@ -18,6 +32,14 @@ int read_int_const_ptr(unsigned char *data, int length)
 	return value;
 }
 
+/**
+ * @brief Reads a string from data.
+ *
+ * This function reads a string of a given length from data. 
+ * The position of the data pointer is not modified.
+ *
+ * @return A pointer to the string read from the data.
+ */
 char* read_str_const_ptr(unsigned char *data, int length)
 {
     char *str = (char*) malloc((length + 1) * sizeof(char));
@@ -33,6 +55,16 @@ char* read_str_const_ptr(unsigned char *data, int length)
     return str;
 }
 
+/**
+ * @brief Reads an integer from data.
+ *
+ * This function reads an integer of a given length from data and 
+ * advances the data pointer by the same number of bytes.
+ *
+ * @param data A double pointer to the data. The double pointer is needed to allow the pointer to shift after the data is read
+ * @param length The length of the integer to read.
+ * @return The integer value read from the data.
+ */
 int read_int(unsigned char **data, int length)
 {
 	int value = 0;
@@ -44,6 +76,16 @@ int read_int(unsigned char **data, int length)
 	return value;
 }
 
+/**
+ * @brief Reads the length of an integer from data, then reads the integer.
+ *
+ * This function first reads a byte from data to determine the length of the integer, 
+ * then reads the integer of that length from data. 
+ * The data pointer is advanced by the length of the integer plus one byte.
+ *
+ * @param data A double pointer to the data. The double pointer is needed to allow the pointer to shift after the data is read
+ * @return The integer value read from the data.
+ */
 int read_length_and_get_int(unsigned char **data)
 {
 	unsigned char length = **data;
@@ -51,6 +93,17 @@ int read_length_and_get_int(unsigned char **data)
 	return read_int(data, length);
 }
 
+/**
+ * @brief Reads a string from data.
+ *
+ * This function reads a string of a given length from data and 
+ * advances the data pointer by the same number of bytes. 
+ * The string will be null-terminated.
+ *
+ * @param data A double pointer to the data. The position of the data pointer will be modified.
+ * @param length The length of the string to read.
+ * @return A pointer to the string read from the data.
+ */
 char* read_str(unsigned char **data, int length)
 {
     char *str = (char*) malloc((length + 1) * sizeof(char));
@@ -69,6 +122,16 @@ char* read_str(unsigned char **data, int length)
     return str;
 }
 
+/**
+ * @brief Allocates memory for an array of pointers to SFLV structures.
+ *
+ * This function allocates memory for an array of pointers to SFLV structures 
+ * according to the count of elements specified in the root node. 
+ * The memory for each structure is also allocated and initialized to zero.
+ *
+ * @param root A pointer to the root node. The count of the root node is used 
+ * to determine the number of elements in the array.
+ */
 void allocate_sflv_array(struct bej_node* root)
 {
 	// allocate memory for the array of pointers to structures
@@ -96,6 +159,11 @@ void allocate_sflv_array(struct bej_node* root)
     root->value = (void**)array;
 }
 
+/**
+ * @brief Frees memory of an array of pointers to SFLV structures.
+ *
+ * This function frees the memory of each SFLV structure and the array of pointers.
+ */
 void free_sflv_array(struct bej_node* root)
 {
     for (unsigned int i = 0; i < root->count; ++i) {
@@ -104,7 +172,19 @@ void free_sflv_array(struct bej_node* root)
     free(root->value);
 }
 
-
+/**
+ * @brief Recursively parses data into a SFLV structure.
+ *
+ * This function will fill all basic fields for bej nodes. 
+ * For each type, general parameters are filled, but for primitives,
+ * a reference to the value is written in the value field, and for complex types, 
+ * a reference to the next node or several nodes is stored in the value field.
+ *
+ * @param parent A pointer to the parent node.
+ * @param data A double pointer to the data. The position of the data pointer will be modified.
+ * @param data_len The length of the data.
+ * @return A pointer to the last node created.
+ */
 struct bej_node* parse_sflv_recursion(struct bej_node *parent, unsigned char **data, size_t data_len)
 {
 	int seq = read_length_and_get_int(data);	
@@ -145,16 +225,25 @@ struct bej_node* parse_sflv_recursion(struct bej_node *parent, unsigned char **d
 		{
 			parent->count = 1;
 			int *int_ptr = malloc(sizeof(int)); 
-			*int_ptr = read_int(data,parent->length); // TODO: зробить функцію що просто записує декілька байт в прямій послідовності без \0 термінатора
+			*int_ptr = read_int(data,parent->length); // TODO: make a function that simply writes several bytes in a direct sequence without the \0 terminator
 			parent->value = (void**)int_ptr;
 			break;
 		}
-	}
-	// TODO: тепер в залежності від типу даних робити різні дії. по різному викликати або не викликати цю функцію. для примітивів просто записувати, для масиву циклом викликати для кожного елементу і тд.
-	
+	}	
     return NULL;
 }
 
+/**
+ * @brief Initializes the parsing of data into a SFLV structure.
+ *
+ * This is an initial function to prepare for recursion. 
+ * Function allocates memory for the root node, advances the data pointer by 12 bytes,
+ * reads the count of elements, and then calls parse_sflv_recursion for each child node.
+ *
+ * @param data A pointer to the data. The position of the data pointer will be modified.
+ * @param data_len The length of the data.
+ * @return A pointer to the root node.
+ */
 struct bej_node* parse_sflv_init(unsigned char *data, size_t data_len)
 {	
 	struct bej_node *root = malloc(sizeof(struct bej_node));
@@ -173,12 +262,18 @@ struct bej_node* parse_sflv_init(unsigned char *data, size_t data_len)
 		parse_sflv_recursion(root->value[i],data_ptr, data_len);
 	}
 	
-	// TODO: тепер в залежності від типу даних робити різні дії. по різному викликати або не викликати цю функцію. для примітивів просто записувати, для масиву циклом викликати для кожного елементу і тд.
 	//free(node);
 	
     return root;
 }
 
+/**
+ * @brief Creates a new dynamic string.
+ *
+ * This function allocates memory for a dynamic string structure 
+ *
+ * @return A pointer to the created dynamic string structure.
+ */
 struct dynamic_string* create_dynamic_string(void)
 {
     struct dynamic_string* str = (struct dynamic_string*) malloc(sizeof(struct dynamic_string));
@@ -188,6 +283,16 @@ struct dynamic_string* create_dynamic_string(void)
     return str;
 }
 
+/**
+ * @brief Checks and reallocates memory for the dynamic string.
+ *
+ * This function checks whether the current capacity of the dynamic string
+ * can accommodate the additional length. If not, it reallocates memory
+ * to increase the capacity.
+ *
+ * @param str A pointer to the dynamic string.
+ * @param additional_length The additional length that needs to be accommodated.
+ */
 void check_realloc(struct dynamic_string* str, size_t additional_length)
 {
     if (str->length + additional_length >= str->capacity) {
@@ -201,6 +306,13 @@ void check_realloc(struct dynamic_string* str, size_t additional_length)
     }
 }
 
+/**
+ * @brief Appends a string to the dynamic string.
+ *
+ * This function appends a given string to the end of the dynamic string.
+ * Before appending, it checks and reallocates memory if necessary.
+ *
+ */
 void append_string(struct dynamic_string* str, const char* append_str)
 {
     size_t append_length = strlen(append_str);
@@ -209,6 +321,12 @@ void append_string(struct dynamic_string* str, const char* append_str)
     str->length += append_length;
 }
 
+/**
+ * @brief Appends a character to the dynamic string.
+ *
+ * This function appends a given character to the end of the dynamic string.
+ *
+ */
 void append_char(struct dynamic_string* str, char c)
 {
     check_realloc(str, 1);
@@ -217,6 +335,16 @@ void append_char(struct dynamic_string* str, char c)
     str->data[str->length] = '\0';
 }
 
+/**
+ * @brief Retrieves the key from the dictionary for the given node.
+ *
+ * This function reads the sequence number from the node and finds the corresponding key
+ * in the schema dictionary using the sequence number.
+ *
+ * @param node A pointer to the BEJ node.
+ * @param schema_dictionary A pointer to the schema dictionary.
+ * @return A string representing the key.
+ */
 char* get_key_from_dictionary (struct bej_node *node, unsigned char *schema_dictionary)
 {
 	unsigned char node_sequence = node->sequence;
@@ -225,6 +353,7 @@ char* get_key_from_dictionary (struct bej_node *node, unsigned char *schema_dict
 	char* result;
 	int entries_count = read_int_const_ptr(schema_dictionary+2, 2); // schema_dictionary offset for EntryCount = 2, EntryCount size = 2 bytes
 			
+	// TODO: replace cycle with offset search using node_sequence
 	schema_dictionary += 13; // offset for first SequenceNumber
 	for (int i = 0; i < entries_count; i++) {
 		if (node_sequence == read_int_const_ptr(schema_dictionary, 2)) {
@@ -239,6 +368,16 @@ char* get_key_from_dictionary (struct bej_node *node, unsigned char *schema_dict
     return result;
 }
 
+/**
+ * @brief Appends the key of a node to the dynamic string.
+ *
+ * This function retrieves the key for the given node from the schema dictionary 
+ * and appends it to the dynamic string with formating.
+ *
+ * @param node A pointer to the BEJ node.
+ * @param str A pointer to the dynamic string.
+ * @param schema_dictionary A pointer to the schema dictionary.
+ */
 void add_node_key_to_str(struct bej_node *node, struct dynamic_string* str, unsigned char *schema_dictionary)
 {
 	append_char(str, '"');
@@ -248,12 +387,32 @@ void add_node_key_to_str(struct bej_node *node, struct dynamic_string* str, unsi
 	free(node_name);
 }
 
+/**
+ * @brief Adds tabs to the dynamic string.
+ *
+ * This function adds a specified number of tabs to the dynamic string.
+ *
+ */
 void add_tab(struct dynamic_string* str, int count)
 {
 	for (int i = 0; i < count; i++) 
 		append_string(str, "\t");
 }
 
+/**
+ * @brief Recursively parses a BEJ node and its children to a string.
+ *
+ * This function recursively parse the BEJ tree and builds a dynamic string.
+ * The function distinguishes between different BEJ formats (INTEGER, STRING, ARRAY) and parses them appropriately.
+ * For each node, the function appends its key (if present) and value to the dynamic string.
+ * In case of ARRAY type, the function recursively processes all child nodes.
+ *
+ * @param node A pointer to the current BEJ node.
+ * @param str A pointer to the dynamic string.
+ * @param parse_type The type of parsing required (with or without key).
+ * @param recursion_depth The current depth of recursion.
+ * @param schema_dictionary A pointer to the schema dictionary.
+ */
 void parse_bej_node_to_str_recursion(struct bej_node *node, struct dynamic_string* str, char parse_type, char recursion_depth, unsigned char *schema_dictionary)
 {
 	recursion_depth++;
@@ -306,6 +465,16 @@ void parse_bej_node_to_str_recursion(struct bej_node *node, struct dynamic_strin
 	}
 }
 
+/**
+ * @brief Initiates the parsing of the BEJ tree to a string.
+ *
+ * This function initializes the parsing of the BEJ tree by starting from the root of the tree.
+ * It adds the enclosing braces to the string and calls the recursive function to parse the nodes.
+ *
+ * @param root A pointer to the root of the BEJ tree.
+ * @param str A pointer to the dynamic string.
+ * @param schema_dictionary A pointer to the schema dictionary.
+ */
 void parse_bej_node_to_str(struct bej_node *root, struct dynamic_string* str, unsigned char *schema_dictionary)
 {
 	append_string(str, "{\n");
@@ -313,6 +482,21 @@ void parse_bej_node_to_str(struct bej_node *root, struct dynamic_string* str, un
 	append_string(str, "}");
 }
 
+/**
+ * @brief Decodes BEJ data into a string.
+ *
+ * This function is the key function in the file, 
+ * that decodes the given BEJ data using the provided dictionaries.
+ * It first parses the BEJ data into a BEJ tree, and then converts this tree into a string.
+ *
+ * @param data A pointer to the BEJ data.
+ * @param data_len The length of the BEJ data.
+ * @param schema_dictionary A pointer to the schema dictionary.
+ * @param schema_dictionary_len The length of the schema dictionary.
+ * @param annotation_dictionary A pointer to the annotation dictionary.
+ * @param annotation_dictionary_len The length of the annotation dictionary.
+ * @return A pointer to the dynamic string holding the decoded data.
+ */
 struct dynamic_string* decode_bej(unsigned char *data, size_t data_len, 
 								unsigned char *schema_dictionary, size_t schema_dictionary_len, 
 								const unsigned char *annotation_dictionary, size_t annotation_dictionary_len)

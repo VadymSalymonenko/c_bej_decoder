@@ -1,0 +1,99 @@
+\hypertarget{structbej__node}{}\doxysection{bej\+\_\+node Struct Reference}
+\label{structbej__node}\index{bej\_node@{bej\_node}}
+
+
+Represents a single node in the BEJ data.  
+
+
+
+
+{\ttfamily \#include $<$bej\+\_\+decoder.\+h$>$}
+
+\doxysubsection*{Data Fields}
+\begin{DoxyCompactItemize}
+\item 
+unsigned char \mbox{\hyperlink{structbej__node_a7f4fd5763c9c9f24ad1e81102a5e7e06}{dictionary\+\_\+type}}
+\begin{DoxyCompactList}\small\item\em The type of dictionary (schema or annotation). \end{DoxyCompactList}\item 
+unsigned char \mbox{\hyperlink{structbej__node_af4442b8a7209ea0f062deb6fe21dd748}{sequence}}
+\begin{DoxyCompactList}\small\item\em The sequence number of the node. \end{DoxyCompactList}\item 
+unsigned char \mbox{\hyperlink{structbej__node_a9be7595e7a13d32d1ff33e033561e92b}{format}}
+\begin{DoxyCompactList}\small\item\em The format of the data (e.\+g., INTEGER, ENUM, STRING, ARRAY). \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{structbej__node_ab34c685a26fc1ae7a48f210eacf3a2c0}{length}}
+\begin{DoxyCompactList}\small\item\em The length of the data value. \end{DoxyCompactList}\item 
+unsigned int \mbox{\hyperlink{structbej__node_a8ff4eeb50805e47cbe575f80bed69d26}{count}}
+\begin{DoxyCompactList}\small\item\em The count of elements in case of ARRAY format. \end{DoxyCompactList}\item 
+void $\ast$$\ast$ \mbox{\hyperlink{structbej__node_a4914211ea40d662331880aace88f7775}{value}}
+\begin{DoxyCompactList}\small\item\em A pointer to the data value. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a single node in the BEJ data. 
+
+The \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} structure holds the information required for a single BEJ data node. 
+
+\doxysubsection{Field Documentation}
+\mbox{\Hypertarget{structbej__node_a8ff4eeb50805e47cbe575f80bed69d26}\label{structbej__node_a8ff4eeb50805e47cbe575f80bed69d26}} 
+\index{bej\_node@{bej\_node}!count@{count}}
+\index{count@{count}!bej\_node@{bej\_node}}
+\doxysubsubsection{\texorpdfstring{count}{count}}
+{\footnotesize\ttfamily unsigned int bej\+\_\+node\+::count}
+
+
+
+The count of elements in case of ARRAY format. 
+
+\mbox{\Hypertarget{structbej__node_a7f4fd5763c9c9f24ad1e81102a5e7e06}\label{structbej__node_a7f4fd5763c9c9f24ad1e81102a5e7e06}} 
+\index{bej\_node@{bej\_node}!dictionary\_type@{dictionary\_type}}
+\index{dictionary\_type@{dictionary\_type}!bej\_node@{bej\_node}}
+\doxysubsubsection{\texorpdfstring{dictionary\_type}{dictionary\_type}}
+{\footnotesize\ttfamily unsigned char bej\+\_\+node\+::dictionary\+\_\+type}
+
+
+
+The type of dictionary (schema or annotation). 
+
+\mbox{\Hypertarget{structbej__node_a9be7595e7a13d32d1ff33e033561e92b}\label{structbej__node_a9be7595e7a13d32d1ff33e033561e92b}} 
+\index{bej\_node@{bej\_node}!format@{format}}
+\index{format@{format}!bej\_node@{bej\_node}}
+\doxysubsubsection{\texorpdfstring{format}{format}}
+{\footnotesize\ttfamily unsigned char bej\+\_\+node\+::format}
+
+
+
+The format of the data (e.\+g., INTEGER, ENUM, STRING, ARRAY). 
+
+\mbox{\Hypertarget{structbej__node_ab34c685a26fc1ae7a48f210eacf3a2c0}\label{structbej__node_ab34c685a26fc1ae7a48f210eacf3a2c0}} 
+\index{bej\_node@{bej\_node}!length@{length}}
+\index{length@{length}!bej\_node@{bej\_node}}
+\doxysubsubsection{\texorpdfstring{length}{length}}
+{\footnotesize\ttfamily unsigned int bej\+\_\+node\+::length}
+
+
+
+The length of the data value. 
+
+\mbox{\Hypertarget{structbej__node_af4442b8a7209ea0f062deb6fe21dd748}\label{structbej__node_af4442b8a7209ea0f062deb6fe21dd748}} 
+\index{bej\_node@{bej\_node}!sequence@{sequence}}
+\index{sequence@{sequence}!bej\_node@{bej\_node}}
+\doxysubsubsection{\texorpdfstring{sequence}{sequence}}
+{\footnotesize\ttfamily unsigned char bej\+\_\+node\+::sequence}
+
+
+
+The sequence number of the node. 
+
+\mbox{\Hypertarget{structbej__node_a4914211ea40d662331880aace88f7775}\label{structbej__node_a4914211ea40d662331880aace88f7775}} 
+\index{bej\_node@{bej\_node}!value@{value}}
+\index{value@{value}!bej\_node@{bej\_node}}
+\doxysubsubsection{\texorpdfstring{value}{value}}
+{\footnotesize\ttfamily void$\ast$$\ast$ bej\+\_\+node\+::value}
+
+
+
+A pointer to the data value. 
+
+
+
+The documentation for this struct was generated from the following file\+:\begin{DoxyCompactItemize}
+\item 
+src/\mbox{\hyperlink{bej__decoder_8h}{bej\+\_\+decoder.\+h}}\end{DoxyCompactItemize}

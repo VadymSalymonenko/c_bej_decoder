@@ -1,0 +1,15 @@
+DOXYFILE_ENCODING      = UTF-8
+PROJECT_NAME           = MyProject
+OUTPUT_DIRECTORY       = /home/pi/entry_test_git/c_bej_decoder/doc
+OPTIMIZE_OUTPUT_FOR_C  = YES
+EXTRACT_ALL            = YES
+GENERATE_LATEX         = YES
+GENERATE_HTML          = YES
+GENERATE_PDF           = YES
+
+
+INPUT                  = /home/pi/entry_test_git/c_bej_decoder/src
+FILE_PATTERNS          = *.c *.h
+
+
+EXCLUDE                =

@@ -4,19 +4,33 @@
 #include <string.h>
 #include <stdlib.h>
 
+/**
+ * @brief Represents the command line arguments.
+ *
+ * The arguments structure holds all command line arguments which can be provided by the user.
+ */
 struct arguments {
-    bool verbose;
-    bool silent;
-    char *operation;
-    char *schema_dictionary;
-    char *annotation_dictionary;
-    char *json_file;
-    char *bej_output_file;
-    char *pdr_map_file_encode;
-    char *bej_encoded_file;
-    char *pdr_map_file_decode;
+    bool verbose;                   ///< Verbose flag for extra output.
+    bool silent;                    ///< Silent flag for minimal output.
+    char *operation;                ///< Operation mode, such as "encode".
+    char *schema_dictionary;        ///< Path to the schema dictionary file.
+    char *annotation_dictionary;    ///< Path to the annotation dictionary file.
+    char *json_file;                ///< Path to the JSON file.
+    char *bej_output_file;          ///< Path to the BEJ output file.
+    char *pdr_map_file_encode;      ///< Path to the PDR map file for encoding.
+    char *bej_encoded_file;         ///< Path to the BEJ encoded file.
+    char *pdr_map_file_decode;      ///< Path to the PDR map file for decoding.
 };
 
+/**
+ * @brief Parses the command line arguments.
+ *
+ * This function goes through the given command line arguments and extracts them into
+ * a structured form for easier use. If the provided arguments are invalid, the function
+ * will print an error message and exit.
+ *
+ * @return The parsed arguments.
+ */
 struct arguments parse_arguments(int argc, char *argv[])
 {
     struct arguments args = {false, false, NULL, NULL, NULL, NULL, NULL, NULL, NULL, NULL};
@@ -69,6 +83,17 @@ struct arguments parse_arguments(int argc, char *argv[])
 }
 
 
+/**
+ * @brief Reads a file into a buffer.
+ *
+ * This function reads a file and places its content into a buffer. It handles file
+ * opening, size determination, memory allocation for the buffer, and file reading. 
+ * If there is any error during these operations, it will print an error message and exit.
+ *
+ * @param file_path The path to the file.
+ * @param buffer The pointer to the buffer to fill.
+ * @return The size of the file.
+ */
 size_t read_file(const char *file_path, unsigned char **buffer)
 {
     FILE *file = fopen(file_path, "rb");
@@ -100,6 +125,16 @@ size_t read_file(const char *file_path, unsigned char **buffer)
     return file_size;
 }
 
+/**
+ * @brief Appends a suffix to the filename.
+ *
+ * This function appends a given suffix to the filename by replacing the ".bin" extension.
+ * If the filename does not have a ".bin" extension, it returns NULL.
+ *
+ * @param filename The original filename.
+ * @param suffix The suffix to be appended.
+ * @return The new filename with the appended suffix. NULL if the filename does not have a ".bin" extension.
+ */
 char* append_to_filename(const char* filename, const char* suffix)
 {
     size_t filename_len = strlen(filename);
@@ -121,6 +156,15 @@ char* append_to_filename(const char* filename, const char* suffix)
     return new_filename;
 }
 
+/**
+ * @brief Writes the content of a dynamic string to a file.
+ *
+ * This function writes the content of a dynamic string to a file with the given filename.
+ * If the file cannot be opened, an error message will be printed.
+ *
+ * @param str The dynamic string to be written to a file.
+ * @param filename The name of the file.
+ */
 void write_to_file(struct dynamic_string* str, const char* filename)
 {
     FILE* file = fopen(filename, "w");
@@ -132,6 +176,17 @@ void write_to_file(struct dynamic_string* str, const char* filename)
     fclose(file);
 }
 
+/**
+ * @brief Main function.
+ *
+ * This function is the entry point of the program. 
+ * It contains the main algorithm of the program: parses the command line arguments,
+ * reads binary files, performs BEJ decoding, and writes the decoded message to a file.
+ *
+ * @param argc The argument count.
+ * @param argv The argument array.
+ * @return The exit status of the program.
+ */
 int main(int argc, char *argv[])
 {
     struct arguments args = parse_arguments(argc, argv);

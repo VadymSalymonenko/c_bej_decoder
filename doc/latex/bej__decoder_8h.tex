@@ -1,0 +1,139 @@
+\hypertarget{bej__decoder_8h}{}\doxysection{src/bej\+\_\+decoder.h File Reference}
+\label{bej__decoder_8h}\index{src/bej\_decoder.h@{src/bej\_decoder.h}}
+{\ttfamily \#include $<$stddef.\+h$>$}\newline
+{\ttfamily \#include $<$string.\+h$>$}\newline
+Include dependency graph for bej\+\_\+decoder.\+h\+:
+% FIG 0
+This graph shows which files directly or indirectly include this file\+:
+% FIG 1
+\doxysubsection*{Data Structures}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}}
+\begin{DoxyCompactList}\small\item\em Represents a single node in the BEJ data. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structdynamic__string}{dynamic\+\_\+string}}
+\begin{DoxyCompactList}\small\item\em Represents a dynamic string used for BEJ data parsing. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Macros}
+\begin{DoxyCompactItemize}
+\item 
+\#define \mbox{\hyperlink{bej__decoder_8h_a5446a5bbb68bb93392b04dfbfa0095af}{INITIAL\+\_\+\+CAPACITY}}~20
+\item 
+\#define \mbox{\hyperlink{bej__decoder_8h_a7344035dc807ad2d84f086adfbc388e1}{CAPACITY\+\_\+\+INCREASE\+\_\+\+STEP}}~50
+\end{DoxyCompactItemize}
+\doxysubsection*{Enumerations}
+\begin{DoxyCompactItemize}
+\item 
+enum \mbox{\hyperlink{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aa}{data\+\_\+types}} \{ \mbox{\hyperlink{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaa5a063e265d2ac903b6808e9f6e73ec46}{INTEGER}} = 0x30
+, \mbox{\hyperlink{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaa5bc38f5ef3a09fbc02c3f3576277a5b9}{ENUM}} = 0x40
+, \mbox{\hyperlink{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaaee847e634a4297b274316de8a8ca9921}{STRING}} = 0x50
+, \mbox{\hyperlink{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaa1e029fbf0c881b85d80fc8e89b753688}{ARRAY}} = 0x10
+ \}
+\begin{DoxyCompactList}\small\item\em Defines the types of data in the BEJ format. \end{DoxyCompactList}\item 
+enum \mbox{\hyperlink{bej__decoder_8h_a45a5522f200654792e28fdcb567e58a7}{bej\+\_\+node\+\_\+to\+\_\+str\+\_\+types}} \{ \mbox{\hyperlink{bej__decoder_8h_a45a5522f200654792e28fdcb567e58a7ae6d04f9bb1cc93e6cbac2b11b95241c3}{WITH\+\_\+\+KEY}}
+, \mbox{\hyperlink{bej__decoder_8h_a45a5522f200654792e28fdcb567e58a7aaa50bb3727d0b471ae87a75212ea5698}{WITHOUT\+\_\+\+KEY}}
+ \}
+\begin{DoxyCompactList}\small\item\em Defines the types of parsing for BEJ nodes to strings. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+struct \mbox{\hyperlink{structdynamic__string}{dynamic\+\_\+string}} $\ast$ \mbox{\hyperlink{bej__decoder_8h_a1651e23462cc0755ba94e0d4673a4ce8}{decode\+\_\+bej}} (unsigned char $\ast$data, size\+\_\+t data\+\_\+len, unsigned char $\ast$schema\+\_\+dictionary, size\+\_\+t schema\+\_\+dictionary\+\_\+len, const unsigned char $\ast$annotation\+\_\+dictionary, size\+\_\+t annotation\+\_\+dictionary\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Decodes BEJ data into a string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Macro Definition Documentation}
+\mbox{\Hypertarget{bej__decoder_8h_a7344035dc807ad2d84f086adfbc388e1}\label{bej__decoder_8h_a7344035dc807ad2d84f086adfbc388e1}} 
+\index{bej\_decoder.h@{bej\_decoder.h}!CAPACITY\_INCREASE\_STEP@{CAPACITY\_INCREASE\_STEP}}
+\index{CAPACITY\_INCREASE\_STEP@{CAPACITY\_INCREASE\_STEP}!bej\_decoder.h@{bej\_decoder.h}}
+\doxysubsubsection{\texorpdfstring{CAPACITY\_INCREASE\_STEP}{CAPACITY\_INCREASE\_STEP}}
+{\footnotesize\ttfamily \#define CAPACITY\+\_\+\+INCREASE\+\_\+\+STEP~50}
+
+\mbox{\Hypertarget{bej__decoder_8h_a5446a5bbb68bb93392b04dfbfa0095af}\label{bej__decoder_8h_a5446a5bbb68bb93392b04dfbfa0095af}} 
+\index{bej\_decoder.h@{bej\_decoder.h}!INITIAL\_CAPACITY@{INITIAL\_CAPACITY}}
+\index{INITIAL\_CAPACITY@{INITIAL\_CAPACITY}!bej\_decoder.h@{bej\_decoder.h}}
+\doxysubsubsection{\texorpdfstring{INITIAL\_CAPACITY}{INITIAL\_CAPACITY}}
+{\footnotesize\ttfamily \#define INITIAL\+\_\+\+CAPACITY~20}
+
+
+
+\doxysubsection{Enumeration Type Documentation}
+\mbox{\Hypertarget{bej__decoder_8h_a45a5522f200654792e28fdcb567e58a7}\label{bej__decoder_8h_a45a5522f200654792e28fdcb567e58a7}} 
+\index{bej\_decoder.h@{bej\_decoder.h}!bej\_node\_to\_str\_types@{bej\_node\_to\_str\_types}}
+\index{bej\_node\_to\_str\_types@{bej\_node\_to\_str\_types}!bej\_decoder.h@{bej\_decoder.h}}
+\doxysubsubsection{\texorpdfstring{bej\_node\_to\_str\_types}{bej\_node\_to\_str\_types}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{bej__decoder_8h_a45a5522f200654792e28fdcb567e58a7}{bej\+\_\+node\+\_\+to\+\_\+str\+\_\+types}}}
+
+
+
+Defines the types of parsing for BEJ nodes to strings. 
+
+This enum lists the two modes of parsing for BEJ nodes into strings. It can either include the key (WITH\+\_\+\+KEY) or exclude it (WITHOUT\+\_\+\+KEY). \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WITH\_KEY@{WITH\_KEY}!bej\_decoder.h@{bej\_decoder.h}}\index{bej\_decoder.h@{bej\_decoder.h}!WITH\_KEY@{WITH\_KEY}}}\mbox{\Hypertarget{bej__decoder_8h_a45a5522f200654792e28fdcb567e58a7ae6d04f9bb1cc93e6cbac2b11b95241c3}\label{bej__decoder_8h_a45a5522f200654792e28fdcb567e58a7ae6d04f9bb1cc93e6cbac2b11b95241c3}} 
+WITH\+\_\+\+KEY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{WITHOUT\_KEY@{WITHOUT\_KEY}!bej\_decoder.h@{bej\_decoder.h}}\index{bej\_decoder.h@{bej\_decoder.h}!WITHOUT\_KEY@{WITHOUT\_KEY}}}\mbox{\Hypertarget{bej__decoder_8h_a45a5522f200654792e28fdcb567e58a7aaa50bb3727d0b471ae87a75212ea5698}\label{bej__decoder_8h_a45a5522f200654792e28fdcb567e58a7aaa50bb3727d0b471ae87a75212ea5698}} 
+WITHOUT\+\_\+\+KEY&\\
+\hline
+
+\end{DoxyEnumFields}
+\mbox{\Hypertarget{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aa}\label{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aa}} 
+\index{bej\_decoder.h@{bej\_decoder.h}!data\_types@{data\_types}}
+\index{data\_types@{data\_types}!bej\_decoder.h@{bej\_decoder.h}}
+\doxysubsubsection{\texorpdfstring{data\_types}{data\_types}}
+{\footnotesize\ttfamily enum \mbox{\hyperlink{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aa}{data\+\_\+types}}}
+
+
+
+Defines the types of data in the BEJ format. 
+
+This enum lists the different types of data that can be present in BEJ. Currently, it includes INTEGER, ENUM, STRING, and ARRAY. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{INTEGER@{INTEGER}!bej\_decoder.h@{bej\_decoder.h}}\index{bej\_decoder.h@{bej\_decoder.h}!INTEGER@{INTEGER}}}\mbox{\Hypertarget{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaa5a063e265d2ac903b6808e9f6e73ec46}\label{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaa5a063e265d2ac903b6808e9f6e73ec46}} 
+INTEGER&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ENUM@{ENUM}!bej\_decoder.h@{bej\_decoder.h}}\index{bej\_decoder.h@{bej\_decoder.h}!ENUM@{ENUM}}}\mbox{\Hypertarget{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaa5bc38f5ef3a09fbc02c3f3576277a5b9}\label{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaa5bc38f5ef3a09fbc02c3f3576277a5b9}} 
+ENUM&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{STRING@{STRING}!bej\_decoder.h@{bej\_decoder.h}}\index{bej\_decoder.h@{bej\_decoder.h}!STRING@{STRING}}}\mbox{\Hypertarget{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaaee847e634a4297b274316de8a8ca9921}\label{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaaee847e634a4297b274316de8a8ca9921}} 
+STRING&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{ARRAY@{ARRAY}!bej\_decoder.h@{bej\_decoder.h}}\index{bej\_decoder.h@{bej\_decoder.h}!ARRAY@{ARRAY}}}\mbox{\Hypertarget{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaa1e029fbf0c881b85d80fc8e89b753688}\label{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaa1e029fbf0c881b85d80fc8e89b753688}} 
+ARRAY&\\
+\hline
+
+\end{DoxyEnumFields}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{bej__decoder_8h_a1651e23462cc0755ba94e0d4673a4ce8}\label{bej__decoder_8h_a1651e23462cc0755ba94e0d4673a4ce8}} 
+\index{bej\_decoder.h@{bej\_decoder.h}!decode\_bej@{decode\_bej}}
+\index{decode\_bej@{decode\_bej}!bej\_decoder.h@{bej\_decoder.h}}
+\doxysubsubsection{\texorpdfstring{decode\_bej()}{decode\_bej()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structdynamic__string}{dynamic\+\_\+string}}$\ast$ decode\+\_\+bej (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{data,  }\item[{size\+\_\+t}]{data\+\_\+len,  }\item[{unsigned char $\ast$}]{schema\+\_\+dictionary,  }\item[{size\+\_\+t}]{schema\+\_\+dictionary\+\_\+len,  }\item[{const unsigned char $\ast$}]{annotation\+\_\+dictionary,  }\item[{size\+\_\+t}]{annotation\+\_\+dictionary\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Decodes BEJ data into a string. 
+
+This function is the key function in the file, that decodes the given BEJ data using the provided dictionaries. It first parses the BEJ data into a BEJ tree, and then converts this tree into a string.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & A pointer to the BEJ data. \\
+\hline
+{\em data\+\_\+len} & The length of the BEJ data. \\
+\hline
+{\em schema\+\_\+dictionary} & A pointer to the schema dictionary. \\
+\hline
+{\em schema\+\_\+dictionary\+\_\+len} & The length of the schema dictionary. \\
+\hline
+{\em annotation\+\_\+dictionary} & A pointer to the annotation dictionary. \\
+\hline
+{\em annotation\+\_\+dictionary\+\_\+len} & The length of the annotation dictionary. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the dynamic string holding the decoded data. 
+\end{DoxyReturn}

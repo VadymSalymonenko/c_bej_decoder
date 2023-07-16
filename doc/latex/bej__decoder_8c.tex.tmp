@@ -1,0 +1,414 @@
+\hypertarget{bej__decoder_8c}{}\doxysection{src/bej\+\_\+decoder.c File Reference}
+\label{bej__decoder_8c}\index{src/bej\_decoder.c@{src/bej\_decoder.c}}
+{\ttfamily \#include \char`\"{}bej\+\_\+decoder.\+h\char`\"{}}\newline
+{\ttfamily \#include $<$stdlib.\+h$>$}\newline
+{\ttfamily \#include $<$stdio.\+h$>$}\newline
+{\ttfamily \#include $<$stdint.\+h$>$}\newline
+Include dependency graph for bej\+\_\+decoder.\+c\+:
+% FIG 0
+\doxysubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{bej__decoder_8c_a1b08e23240c0ddf82dcf069f3fde61bd}{advance\+\_\+ptr}} (unsigned char $\ast$$\ast$data, int bytes\+\_\+to\+\_\+advance)
+\begin{DoxyCompactList}\small\item\em Advances the position of a pointer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{bej__decoder_8c_a54f5c0fbab108d820ddfc5a60ebea2fa}{read\+\_\+int\+\_\+const\+\_\+ptr}} (unsigned char $\ast$data, int length)
+\begin{DoxyCompactList}\small\item\em Reads an integer from data. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{bej__decoder_8c_a15dd2a2f04ea263c2e66861676eacde5}{read\+\_\+str\+\_\+const\+\_\+ptr}} (unsigned char $\ast$data, int length)
+\begin{DoxyCompactList}\small\item\em Reads a string from data. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{bej__decoder_8c_aa524f98bef13dd63aa015bda5a84c3d6}{read\+\_\+int}} (unsigned char $\ast$$\ast$data, int length)
+\begin{DoxyCompactList}\small\item\em Reads an integer from data. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{bej__decoder_8c_a9a1e449bf8ab0198a1dc7922136510ea}{read\+\_\+length\+\_\+and\+\_\+get\+\_\+int}} (unsigned char $\ast$$\ast$data)
+\begin{DoxyCompactList}\small\item\em Reads the length of an integer from data, then reads the integer. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{bej__decoder_8c_a791b3d5c96b1e9ebeddbcdb992eb0678}{read\+\_\+str}} (unsigned char $\ast$$\ast$data, int length)
+\begin{DoxyCompactList}\small\item\em Reads a string from data. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{bej__decoder_8c_a6e0d2c4f1ff21290a6e91538ece132c4}{allocate\+\_\+sflv\+\_\+array}} (struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$root)
+\begin{DoxyCompactList}\small\item\em Allocates memory for an array of pointers to SFLV structures. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{bej__decoder_8c_ad3527bde59a731fd8c6fa4358caac455}{free\+\_\+sflv\+\_\+array}} (struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$root)
+\begin{DoxyCompactList}\small\item\em Frees memory of an array of pointers to SFLV structures. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$ \mbox{\hyperlink{bej__decoder_8c_a512b0358b77851241f832bcbc707103b}{parse\+\_\+sflv\+\_\+recursion}} (struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$parent, unsigned char $\ast$$\ast$data, size\+\_\+t data\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Recursively parses data into a SFLV structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$ \mbox{\hyperlink{bej__decoder_8c_ad983441c699b8261b6bc1413a0cd0184}{parse\+\_\+sflv\+\_\+init}} (unsigned char $\ast$data, size\+\_\+t data\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Initializes the parsing of data into a SFLV structure. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structdynamic__string}{dynamic\+\_\+string}} $\ast$ \mbox{\hyperlink{bej__decoder_8c_a6b0f831d096531abbe7a329a57a80e24}{create\+\_\+dynamic\+\_\+string}} (void)
+\begin{DoxyCompactList}\small\item\em Creates a new dynamic string. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{bej__decoder_8c_ad5d254279f4e08699cf3ca9b18ea2cc3}{check\+\_\+realloc}} (struct \mbox{\hyperlink{structdynamic__string}{dynamic\+\_\+string}} $\ast$str, size\+\_\+t additional\+\_\+length)
+\begin{DoxyCompactList}\small\item\em Checks and reallocates memory for the dynamic string. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{bej__decoder_8c_ae84809574808f29af561ff2a5b76fba4}{append\+\_\+string}} (struct \mbox{\hyperlink{structdynamic__string}{dynamic\+\_\+string}} $\ast$str, const char $\ast$append\+\_\+str)
+\begin{DoxyCompactList}\small\item\em Appends a string to the dynamic string. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{bej__decoder_8c_abbc21842284e7153d39958ca97c2da8b}{append\+\_\+char}} (struct \mbox{\hyperlink{structdynamic__string}{dynamic\+\_\+string}} $\ast$str, char c)
+\begin{DoxyCompactList}\small\item\em Appends a character to the dynamic string. \end{DoxyCompactList}\item 
+char $\ast$ \mbox{\hyperlink{bej__decoder_8c_a608dc77b7ed16577b157e7bb774537b2}{get\+\_\+key\+\_\+from\+\_\+dictionary}} (struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$node, unsigned char $\ast$schema\+\_\+dictionary)
+\begin{DoxyCompactList}\small\item\em Retrieves the key from the dictionary for the given node. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{bej__decoder_8c_a5297aa4020b05578d17cb40783c5f140}{add\+\_\+node\+\_\+key\+\_\+to\+\_\+str}} (struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$node, struct \mbox{\hyperlink{structdynamic__string}{dynamic\+\_\+string}} $\ast$str, unsigned char $\ast$schema\+\_\+dictionary)
+\begin{DoxyCompactList}\small\item\em Appends the key of a node to the dynamic string. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{bej__decoder_8c_a53929b18f3c3e40299e1269b0e6ec3f5}{add\+\_\+tab}} (struct \mbox{\hyperlink{structdynamic__string}{dynamic\+\_\+string}} $\ast$str, int count)
+\begin{DoxyCompactList}\small\item\em Adds tabs to the dynamic string. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{bej__decoder_8c_a64ac21e49ede2df99d05d62778013958}{parse\+\_\+bej\+\_\+node\+\_\+to\+\_\+str\+\_\+recursion}} (struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$node, struct \mbox{\hyperlink{structdynamic__string}{dynamic\+\_\+string}} $\ast$str, char parse\+\_\+type, char recursion\+\_\+depth, unsigned char $\ast$schema\+\_\+dictionary)
+\begin{DoxyCompactList}\small\item\em Recursively parses a BEJ node and its children to a string. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{bej__decoder_8c_a11d8ca7465a9dc756c33c2684f4807bc}{parse\+\_\+bej\+\_\+node\+\_\+to\+\_\+str}} (struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$root, struct \mbox{\hyperlink{structdynamic__string}{dynamic\+\_\+string}} $\ast$str, unsigned char $\ast$schema\+\_\+dictionary)
+\begin{DoxyCompactList}\small\item\em Initiates the parsing of the BEJ tree to a string. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structdynamic__string}{dynamic\+\_\+string}} $\ast$ \mbox{\hyperlink{bej__decoder_8c_a1651e23462cc0755ba94e0d4673a4ce8}{decode\+\_\+bej}} (unsigned char $\ast$data, size\+\_\+t data\+\_\+len, unsigned char $\ast$schema\+\_\+dictionary, size\+\_\+t schema\+\_\+dictionary\+\_\+len, const unsigned char $\ast$annotation\+\_\+dictionary, size\+\_\+t annotation\+\_\+dictionary\+\_\+len)
+\begin{DoxyCompactList}\small\item\em Decodes BEJ data into a string. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\mbox{\Hypertarget{bej__decoder_8c_a5297aa4020b05578d17cb40783c5f140}\label{bej__decoder_8c_a5297aa4020b05578d17cb40783c5f140}} 
+\index{bej\_decoder.c@{bej\_decoder.c}!add\_node\_key\_to\_str@{add\_node\_key\_to\_str}}
+\index{add\_node\_key\_to\_str@{add\_node\_key\_to\_str}!bej\_decoder.c@{bej\_decoder.c}}
+\doxysubsubsection{\texorpdfstring{add\_node\_key\_to\_str()}{add\_node\_key\_to\_str()}}
+{\footnotesize\ttfamily void add\+\_\+node\+\_\+key\+\_\+to\+\_\+str (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$}]{node,  }\item[{struct \mbox{\hyperlink{structdynamic__string}{dynamic\+\_\+string}} $\ast$}]{str,  }\item[{unsigned char $\ast$}]{schema\+\_\+dictionary }\end{DoxyParamCaption})}
+
+
+
+Appends the key of a node to the dynamic string. 
+
+This function retrieves the key for the given node from the schema dictionary and appends it to the dynamic string with formating.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & A pointer to the BEJ node. \\
+\hline
+{\em str} & A pointer to the dynamic string. \\
+\hline
+{\em schema\+\_\+dictionary} & A pointer to the schema dictionary. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{bej__decoder_8c_a53929b18f3c3e40299e1269b0e6ec3f5}\label{bej__decoder_8c_a53929b18f3c3e40299e1269b0e6ec3f5}} 
+\index{bej\_decoder.c@{bej\_decoder.c}!add\_tab@{add\_tab}}
+\index{add\_tab@{add\_tab}!bej\_decoder.c@{bej\_decoder.c}}
+\doxysubsubsection{\texorpdfstring{add\_tab()}{add\_tab()}}
+{\footnotesize\ttfamily void add\+\_\+tab (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structdynamic__string}{dynamic\+\_\+string}} $\ast$}]{str,  }\item[{int}]{count }\end{DoxyParamCaption})}
+
+
+
+Adds tabs to the dynamic string. 
+
+This function adds a specified number of tabs to the dynamic string. \mbox{\Hypertarget{bej__decoder_8c_a1b08e23240c0ddf82dcf069f3fde61bd}\label{bej__decoder_8c_a1b08e23240c0ddf82dcf069f3fde61bd}} 
+\index{bej\_decoder.c@{bej\_decoder.c}!advance\_ptr@{advance\_ptr}}
+\index{advance\_ptr@{advance\_ptr}!bej\_decoder.c@{bej\_decoder.c}}
+\doxysubsubsection{\texorpdfstring{advance\_ptr()}{advance\_ptr()}}
+{\footnotesize\ttfamily void advance\+\_\+ptr (\begin{DoxyParamCaption}\item[{unsigned char $\ast$$\ast$}]{data,  }\item[{int}]{bytes\+\_\+to\+\_\+advance }\end{DoxyParamCaption})}
+
+
+
+Advances the position of a pointer. 
+
+This function advances the position of a pointer by a given number of bytes. \mbox{\Hypertarget{bej__decoder_8c_a6e0d2c4f1ff21290a6e91538ece132c4}\label{bej__decoder_8c_a6e0d2c4f1ff21290a6e91538ece132c4}} 
+\index{bej\_decoder.c@{bej\_decoder.c}!allocate\_sflv\_array@{allocate\_sflv\_array}}
+\index{allocate\_sflv\_array@{allocate\_sflv\_array}!bej\_decoder.c@{bej\_decoder.c}}
+\doxysubsubsection{\texorpdfstring{allocate\_sflv\_array()}{allocate\_sflv\_array()}}
+{\footnotesize\ttfamily void allocate\+\_\+sflv\+\_\+array (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$}]{root }\end{DoxyParamCaption})}
+
+
+
+Allocates memory for an array of pointers to SFLV structures. 
+
+This function allocates memory for an array of pointers to SFLV structures according to the count of elements specified in the root node. The memory for each structure is also allocated and initialized to zero.
+
+
+\begin{DoxyParams}{Parameters}
+{\em root} & A pointer to the root node. The count of the root node is used to determine the number of elements in the array. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{bej__decoder_8c_abbc21842284e7153d39958ca97c2da8b}\label{bej__decoder_8c_abbc21842284e7153d39958ca97c2da8b}} 
+\index{bej\_decoder.c@{bej\_decoder.c}!append\_char@{append\_char}}
+\index{append\_char@{append\_char}!bej\_decoder.c@{bej\_decoder.c}}
+\doxysubsubsection{\texorpdfstring{append\_char()}{append\_char()}}
+{\footnotesize\ttfamily void append\+\_\+char (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structdynamic__string}{dynamic\+\_\+string}} $\ast$}]{str,  }\item[{char}]{c }\end{DoxyParamCaption})}
+
+
+
+Appends a character to the dynamic string. 
+
+This function appends a given character to the end of the dynamic string. \mbox{\Hypertarget{bej__decoder_8c_ae84809574808f29af561ff2a5b76fba4}\label{bej__decoder_8c_ae84809574808f29af561ff2a5b76fba4}} 
+\index{bej\_decoder.c@{bej\_decoder.c}!append\_string@{append\_string}}
+\index{append\_string@{append\_string}!bej\_decoder.c@{bej\_decoder.c}}
+\doxysubsubsection{\texorpdfstring{append\_string()}{append\_string()}}
+{\footnotesize\ttfamily void append\+\_\+string (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structdynamic__string}{dynamic\+\_\+string}} $\ast$}]{str,  }\item[{const char $\ast$}]{append\+\_\+str }\end{DoxyParamCaption})}
+
+
+
+Appends a string to the dynamic string. 
+
+This function appends a given string to the end of the dynamic string. Before appending, it checks and reallocates memory if necessary. \mbox{\Hypertarget{bej__decoder_8c_ad5d254279f4e08699cf3ca9b18ea2cc3}\label{bej__decoder_8c_ad5d254279f4e08699cf3ca9b18ea2cc3}} 
+\index{bej\_decoder.c@{bej\_decoder.c}!check\_realloc@{check\_realloc}}
+\index{check\_realloc@{check\_realloc}!bej\_decoder.c@{bej\_decoder.c}}
+\doxysubsubsection{\texorpdfstring{check\_realloc()}{check\_realloc()}}
+{\footnotesize\ttfamily void check\+\_\+realloc (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structdynamic__string}{dynamic\+\_\+string}} $\ast$}]{str,  }\item[{size\+\_\+t}]{additional\+\_\+length }\end{DoxyParamCaption})}
+
+
+
+Checks and reallocates memory for the dynamic string. 
+
+This function checks whether the current capacity of the dynamic string can accommodate the additional length. If not, it reallocates memory to increase the capacity.
+
+
+\begin{DoxyParams}{Parameters}
+{\em str} & A pointer to the dynamic string. \\
+\hline
+{\em additional\+\_\+length} & The additional length that needs to be accommodated. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{bej__decoder_8c_a6b0f831d096531abbe7a329a57a80e24}\label{bej__decoder_8c_a6b0f831d096531abbe7a329a57a80e24}} 
+\index{bej\_decoder.c@{bej\_decoder.c}!create\_dynamic\_string@{create\_dynamic\_string}}
+\index{create\_dynamic\_string@{create\_dynamic\_string}!bej\_decoder.c@{bej\_decoder.c}}
+\doxysubsubsection{\texorpdfstring{create\_dynamic\_string()}{create\_dynamic\_string()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structdynamic__string}{dynamic\+\_\+string}}$\ast$ create\+\_\+dynamic\+\_\+string (\begin{DoxyParamCaption}\item[{void}]{ }\end{DoxyParamCaption})}
+
+
+
+Creates a new dynamic string. 
+
+This function allocates memory for a dynamic string structure
+
+\begin{DoxyReturn}{Returns}
+A pointer to the created dynamic string structure. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bej__decoder_8c_a1651e23462cc0755ba94e0d4673a4ce8}\label{bej__decoder_8c_a1651e23462cc0755ba94e0d4673a4ce8}} 
+\index{bej\_decoder.c@{bej\_decoder.c}!decode\_bej@{decode\_bej}}
+\index{decode\_bej@{decode\_bej}!bej\_decoder.c@{bej\_decoder.c}}
+\doxysubsubsection{\texorpdfstring{decode\_bej()}{decode\_bej()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structdynamic__string}{dynamic\+\_\+string}}$\ast$ decode\+\_\+bej (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{data,  }\item[{size\+\_\+t}]{data\+\_\+len,  }\item[{unsigned char $\ast$}]{schema\+\_\+dictionary,  }\item[{size\+\_\+t}]{schema\+\_\+dictionary\+\_\+len,  }\item[{const unsigned char $\ast$}]{annotation\+\_\+dictionary,  }\item[{size\+\_\+t}]{annotation\+\_\+dictionary\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Decodes BEJ data into a string. 
+
+This function is the key function in the file, that decodes the given BEJ data using the provided dictionaries. It first parses the BEJ data into a BEJ tree, and then converts this tree into a string.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & A pointer to the BEJ data. \\
+\hline
+{\em data\+\_\+len} & The length of the BEJ data. \\
+\hline
+{\em schema\+\_\+dictionary} & A pointer to the schema dictionary. \\
+\hline
+{\em schema\+\_\+dictionary\+\_\+len} & The length of the schema dictionary. \\
+\hline
+{\em annotation\+\_\+dictionary} & A pointer to the annotation dictionary. \\
+\hline
+{\em annotation\+\_\+dictionary\+\_\+len} & The length of the annotation dictionary. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the dynamic string holding the decoded data. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bej__decoder_8c_ad3527bde59a731fd8c6fa4358caac455}\label{bej__decoder_8c_ad3527bde59a731fd8c6fa4358caac455}} 
+\index{bej\_decoder.c@{bej\_decoder.c}!free\_sflv\_array@{free\_sflv\_array}}
+\index{free\_sflv\_array@{free\_sflv\_array}!bej\_decoder.c@{bej\_decoder.c}}
+\doxysubsubsection{\texorpdfstring{free\_sflv\_array()}{free\_sflv\_array()}}
+{\footnotesize\ttfamily void free\+\_\+sflv\+\_\+array (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$}]{root }\end{DoxyParamCaption})}
+
+
+
+Frees memory of an array of pointers to SFLV structures. 
+
+This function frees the memory of each SFLV structure and the array of pointers. \mbox{\Hypertarget{bej__decoder_8c_a608dc77b7ed16577b157e7bb774537b2}\label{bej__decoder_8c_a608dc77b7ed16577b157e7bb774537b2}} 
+\index{bej\_decoder.c@{bej\_decoder.c}!get\_key\_from\_dictionary@{get\_key\_from\_dictionary}}
+\index{get\_key\_from\_dictionary@{get\_key\_from\_dictionary}!bej\_decoder.c@{bej\_decoder.c}}
+\doxysubsubsection{\texorpdfstring{get\_key\_from\_dictionary()}{get\_key\_from\_dictionary()}}
+{\footnotesize\ttfamily char$\ast$ get\+\_\+key\+\_\+from\+\_\+dictionary (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$}]{node,  }\item[{unsigned char $\ast$}]{schema\+\_\+dictionary }\end{DoxyParamCaption})}
+
+
+
+Retrieves the key from the dictionary for the given node. 
+
+This function reads the sequence number from the node and finds the corresponding key in the schema dictionary using the sequence number.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & A pointer to the BEJ node. \\
+\hline
+{\em schema\+\_\+dictionary} & A pointer to the schema dictionary. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A string representing the key. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bej__decoder_8c_a11d8ca7465a9dc756c33c2684f4807bc}\label{bej__decoder_8c_a11d8ca7465a9dc756c33c2684f4807bc}} 
+\index{bej\_decoder.c@{bej\_decoder.c}!parse\_bej\_node\_to\_str@{parse\_bej\_node\_to\_str}}
+\index{parse\_bej\_node\_to\_str@{parse\_bej\_node\_to\_str}!bej\_decoder.c@{bej\_decoder.c}}
+\doxysubsubsection{\texorpdfstring{parse\_bej\_node\_to\_str()}{parse\_bej\_node\_to\_str()}}
+{\footnotesize\ttfamily void parse\+\_\+bej\+\_\+node\+\_\+to\+\_\+str (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$}]{root,  }\item[{struct \mbox{\hyperlink{structdynamic__string}{dynamic\+\_\+string}} $\ast$}]{str,  }\item[{unsigned char $\ast$}]{schema\+\_\+dictionary }\end{DoxyParamCaption})}
+
+
+
+Initiates the parsing of the BEJ tree to a string. 
+
+This function initializes the parsing of the BEJ tree by starting from the root of the tree. It adds the enclosing braces to the string and calls the recursive function to parse the nodes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em root} & A pointer to the root of the BEJ tree. \\
+\hline
+{\em str} & A pointer to the dynamic string. \\
+\hline
+{\em schema\+\_\+dictionary} & A pointer to the schema dictionary. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{bej__decoder_8c_a64ac21e49ede2df99d05d62778013958}\label{bej__decoder_8c_a64ac21e49ede2df99d05d62778013958}} 
+\index{bej\_decoder.c@{bej\_decoder.c}!parse\_bej\_node\_to\_str\_recursion@{parse\_bej\_node\_to\_str\_recursion}}
+\index{parse\_bej\_node\_to\_str\_recursion@{parse\_bej\_node\_to\_str\_recursion}!bej\_decoder.c@{bej\_decoder.c}}
+\doxysubsubsection{\texorpdfstring{parse\_bej\_node\_to\_str\_recursion()}{parse\_bej\_node\_to\_str\_recursion()}}
+{\footnotesize\ttfamily void parse\+\_\+bej\+\_\+node\+\_\+to\+\_\+str\+\_\+recursion (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$}]{node,  }\item[{struct \mbox{\hyperlink{structdynamic__string}{dynamic\+\_\+string}} $\ast$}]{str,  }\item[{char}]{parse\+\_\+type,  }\item[{char}]{recursion\+\_\+depth,  }\item[{unsigned char $\ast$}]{schema\+\_\+dictionary }\end{DoxyParamCaption})}
+
+
+
+Recursively parses a BEJ node and its children to a string. 
+
+This function recursively parse the BEJ tree and builds a dynamic string. The function distinguishes between different BEJ formats (INTEGER, STRING, ARRAY) and parses them appropriately. For each node, the function appends its key (if present) and value to the dynamic string. In case of ARRAY type, the function recursively processes all child nodes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & A pointer to the current BEJ node. \\
+\hline
+{\em str} & A pointer to the dynamic string. \\
+\hline
+{\em parse\+\_\+type} & The type of parsing required (with or without key). \\
+\hline
+{\em recursion\+\_\+depth} & The current depth of recursion. \\
+\hline
+{\em schema\+\_\+dictionary} & A pointer to the schema dictionary. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{bej__decoder_8c_ad983441c699b8261b6bc1413a0cd0184}\label{bej__decoder_8c_ad983441c699b8261b6bc1413a0cd0184}} 
+\index{bej\_decoder.c@{bej\_decoder.c}!parse\_sflv\_init@{parse\_sflv\_init}}
+\index{parse\_sflv\_init@{parse\_sflv\_init}!bej\_decoder.c@{bej\_decoder.c}}
+\doxysubsubsection{\texorpdfstring{parse\_sflv\_init()}{parse\_sflv\_init()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}}$\ast$ parse\+\_\+sflv\+\_\+init (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{data,  }\item[{size\+\_\+t}]{data\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Initializes the parsing of data into a SFLV structure. 
+
+This is an initial function to prepare for recursion. Function allocates memory for the root node, advances the data pointer by 12 bytes, reads the count of elements, and then calls parse\+\_\+sflv\+\_\+recursion for each child node.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & A pointer to the data. The position of the data pointer will be modified. \\
+\hline
+{\em data\+\_\+len} & The length of the data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the root node. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bej__decoder_8c_a512b0358b77851241f832bcbc707103b}\label{bej__decoder_8c_a512b0358b77851241f832bcbc707103b}} 
+\index{bej\_decoder.c@{bej\_decoder.c}!parse\_sflv\_recursion@{parse\_sflv\_recursion}}
+\index{parse\_sflv\_recursion@{parse\_sflv\_recursion}!bej\_decoder.c@{bej\_decoder.c}}
+\doxysubsubsection{\texorpdfstring{parse\_sflv\_recursion()}{parse\_sflv\_recursion()}}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}}$\ast$ parse\+\_\+sflv\+\_\+recursion (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$}]{parent,  }\item[{unsigned char $\ast$$\ast$}]{data,  }\item[{size\+\_\+t}]{data\+\_\+len }\end{DoxyParamCaption})}
+
+
+
+Recursively parses data into a SFLV structure. 
+
+This function will fill all basic fields for bej nodes. For each type, general parameters are filled, but for primitives, a reference to the value is written in the value field, and for complex types, a reference to the next node or several nodes is stored in the value field.
+
+
+\begin{DoxyParams}{Parameters}
+{\em parent} & A pointer to the parent node. \\
+\hline
+{\em data} & A double pointer to the data. The position of the data pointer will be modified. \\
+\hline
+{\em data\+\_\+len} & The length of the data. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the last node created. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bej__decoder_8c_aa524f98bef13dd63aa015bda5a84c3d6}\label{bej__decoder_8c_aa524f98bef13dd63aa015bda5a84c3d6}} 
+\index{bej\_decoder.c@{bej\_decoder.c}!read\_int@{read\_int}}
+\index{read\_int@{read\_int}!bej\_decoder.c@{bej\_decoder.c}}
+\doxysubsubsection{\texorpdfstring{read\_int()}{read\_int()}}
+{\footnotesize\ttfamily int read\+\_\+int (\begin{DoxyParamCaption}\item[{unsigned char $\ast$$\ast$}]{data,  }\item[{int}]{length }\end{DoxyParamCaption})}
+
+
+
+Reads an integer from data. 
+
+This function reads an integer of a given length from data and advances the data pointer by the same number of bytes.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & A double pointer to the data. The double pointer is needed to allow the pointer to shift after the data is read \\
+\hline
+{\em length} & The length of the integer to read. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The integer value read from the data. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bej__decoder_8c_a54f5c0fbab108d820ddfc5a60ebea2fa}\label{bej__decoder_8c_a54f5c0fbab108d820ddfc5a60ebea2fa}} 
+\index{bej\_decoder.c@{bej\_decoder.c}!read\_int\_const\_ptr@{read\_int\_const\_ptr}}
+\index{read\_int\_const\_ptr@{read\_int\_const\_ptr}!bej\_decoder.c@{bej\_decoder.c}}
+\doxysubsubsection{\texorpdfstring{read\_int\_const\_ptr()}{read\_int\_const\_ptr()}}
+{\footnotesize\ttfamily int read\+\_\+int\+\_\+const\+\_\+ptr (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{data,  }\item[{int}]{length }\end{DoxyParamCaption})}
+
+
+
+Reads an integer from data. 
+
+This function reads an integer of a given length from data. The position of the data pointer is not modified.
+
+\begin{DoxyReturn}{Returns}
+The integer value read from the data. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bej__decoder_8c_a9a1e449bf8ab0198a1dc7922136510ea}\label{bej__decoder_8c_a9a1e449bf8ab0198a1dc7922136510ea}} 
+\index{bej\_decoder.c@{bej\_decoder.c}!read\_length\_and\_get\_int@{read\_length\_and\_get\_int}}
+\index{read\_length\_and\_get\_int@{read\_length\_and\_get\_int}!bej\_decoder.c@{bej\_decoder.c}}
+\doxysubsubsection{\texorpdfstring{read\_length\_and\_get\_int()}{read\_length\_and\_get\_int()}}
+{\footnotesize\ttfamily int read\+\_\+length\+\_\+and\+\_\+get\+\_\+int (\begin{DoxyParamCaption}\item[{unsigned char $\ast$$\ast$}]{data }\end{DoxyParamCaption})}
+
+
+
+Reads the length of an integer from data, then reads the integer. 
+
+This function first reads a byte from data to determine the length of the integer, then reads the integer of that length from data. The data pointer is advanced by the length of the integer plus one byte.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & A double pointer to the data. The double pointer is needed to allow the pointer to shift after the data is read \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The integer value read from the data. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bej__decoder_8c_a791b3d5c96b1e9ebeddbcdb992eb0678}\label{bej__decoder_8c_a791b3d5c96b1e9ebeddbcdb992eb0678}} 
+\index{bej\_decoder.c@{bej\_decoder.c}!read\_str@{read\_str}}
+\index{read\_str@{read\_str}!bej\_decoder.c@{bej\_decoder.c}}
+\doxysubsubsection{\texorpdfstring{read\_str()}{read\_str()}}
+{\footnotesize\ttfamily char$\ast$ read\+\_\+str (\begin{DoxyParamCaption}\item[{unsigned char $\ast$$\ast$}]{data,  }\item[{int}]{length }\end{DoxyParamCaption})}
+
+
+
+Reads a string from data. 
+
+This function reads a string of a given length from data and advances the data pointer by the same number of bytes. The string will be null-\/terminated.
+
+
+\begin{DoxyParams}{Parameters}
+{\em data} & A double pointer to the data. The position of the data pointer will be modified. \\
+\hline
+{\em length} & The length of the string to read. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+A pointer to the string read from the data. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bej__decoder_8c_a15dd2a2f04ea263c2e66861676eacde5}\label{bej__decoder_8c_a15dd2a2f04ea263c2e66861676eacde5}} 
+\index{bej\_decoder.c@{bej\_decoder.c}!read\_str\_const\_ptr@{read\_str\_const\_ptr}}
+\index{read\_str\_const\_ptr@{read\_str\_const\_ptr}!bej\_decoder.c@{bej\_decoder.c}}
+\doxysubsubsection{\texorpdfstring{read\_str\_const\_ptr()}{read\_str\_const\_ptr()}}
+{\footnotesize\ttfamily char$\ast$ read\+\_\+str\+\_\+const\+\_\+ptr (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{data,  }\item[{int}]{length }\end{DoxyParamCaption})}
+
+
+
+Reads a string from data. 
+
+This function reads a string of a given length from data. The position of the data pointer is not modified.
+
+\begin{DoxyReturn}{Returns}
+A pointer to the string read from the data. 
+\end{DoxyReturn}
