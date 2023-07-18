@@ -25,7 +25,7 @@ struct bej_node {
  * Currently, it includes INTEGER, ENUM, STRING, and ARRAY.
  */
 enum data_types {
-	//BOOLEAN = 0x30,
+	BOOLEAN = 0x70,
 	INTEGER = 0x30,
 	ENUM = 0x40,
 	STRING = 0x50,

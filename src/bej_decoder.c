@@ -199,6 +199,7 @@ struct bej_node* parse_sflv_recursion(struct bej_node *parent, unsigned char **d
 	parent->length = read_length_and_get_int(data);
 
 	switch (parent->format) {
+		case BOOLEAN:
 		case INTEGER: 
 		{
 			int *int_ptr = (int*)malloc(sizeof(int)); 
@@ -211,7 +212,7 @@ struct bej_node* parse_sflv_recursion(struct bej_node *parent, unsigned char **d
 			char *str_ptr = read_str(data,parent->length);
 			parent->value = (void**)str_ptr;		
 			break;
-		}
+		} 
 		case ARRAY: 
 		{
 	        parent->count = read_length_and_get_int((data));
@@ -434,6 +435,15 @@ void parse_bej_node_to_str_recursion(struct bej_node *node, struct dynamic_strin
 				append_char(str, '"');
 				append_string(str, (char*)node->value);
 				append_char(str, '"');
+				free(((int*)node->value));
+				free(node);
+				break;
+			case BOOLEAN: 
+				if (*(node->value) == 0) {
+					append_string(str, "false");
+				} else {
+					append_string(str, "true");
+				}
 				free(((int*)node->value));
 				free(node);
 				break;
