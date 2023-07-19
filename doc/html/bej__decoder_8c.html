@@ -107,12 +107,15 @@ Functions</h2></td></tr>
 <tr class="memitem:ad3527bde59a731fd8c6fa4358caac455"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bej__decoder_8c.html#ad3527bde59a731fd8c6fa4358caac455">free_sflv_array</a> (struct <a class="el" href="structbej__node.html">bej_node</a> *root)</td></tr>
 <tr class="memdesc:ad3527bde59a731fd8c6fa4358caac455"><td class="mdescLeft">&#160;</td><td class="mdescRight">Frees memory of an array of pointers to SFLV structures.  <a href="bej__decoder_8c.html#ad3527bde59a731fd8c6fa4358caac455">More...</a><br /></td></tr>
 <tr class="separator:ad3527bde59a731fd8c6fa4358caac455"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a512b0358b77851241f832bcbc707103b"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structbej__node.html">bej_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bej__decoder_8c.html#a512b0358b77851241f832bcbc707103b">parse_sflv_recursion</a> (struct <a class="el" href="structbej__node.html">bej_node</a> *parent, unsigned char **data, size_t data_len)</td></tr>
-<tr class="memdesc:a512b0358b77851241f832bcbc707103b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recursively parses data into a SFLV structure.  <a href="bej__decoder_8c.html#a512b0358b77851241f832bcbc707103b">More...</a><br /></td></tr>
-<tr class="separator:a512b0358b77851241f832bcbc707103b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad983441c699b8261b6bc1413a0cd0184"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structbej__node.html">bej_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bej__decoder_8c.html#ad983441c699b8261b6bc1413a0cd0184">parse_sflv_init</a> (unsigned char *data, size_t data_len)</td></tr>
-<tr class="memdesc:ad983441c699b8261b6bc1413a0cd0184"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the parsing of data into a SFLV structure.  <a href="bej__decoder_8c.html#ad983441c699b8261b6bc1413a0cd0184">More...</a><br /></td></tr>
-<tr class="separator:ad983441c699b8261b6bc1413a0cd0184"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a39757a447da008a84fd545cb6a571ccd"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bej__decoder_8c.html#a39757a447da008a84fd545cb6a571ccd">get_child_pointer_offset_dictionary</a> (struct <a class="el" href="structbej__node.html">bej_node</a> *node, unsigned char *schema_dictionary)</td></tr>
+<tr class="memdesc:a39757a447da008a84fd545cb6a571ccd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets the offset of a child node in the schema dictionary.  <a href="bej__decoder_8c.html#a39757a447da008a84fd545cb6a571ccd">More...</a><br /></td></tr>
+<tr class="separator:a39757a447da008a84fd545cb6a571ccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3e75adb75dcd126dd9bfc9170a141715"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structbej__node.html">bej_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bej__decoder_8c.html#a3e75adb75dcd126dd9bfc9170a141715">parse_sflv_recursion</a> (struct <a class="el" href="structbej__node.html">bej_node</a> *parent, unsigned char **data, size_t data_len, unsigned char *schema_dictionary)</td></tr>
+<tr class="memdesc:a3e75adb75dcd126dd9bfc9170a141715"><td class="mdescLeft">&#160;</td><td class="mdescRight">Recursively parses data into a SFLV structure.  <a href="bej__decoder_8c.html#a3e75adb75dcd126dd9bfc9170a141715">More...</a><br /></td></tr>
+<tr class="separator:a3e75adb75dcd126dd9bfc9170a141715"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a123662a62b2acdc09f89b255ebc947ca"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structbej__node.html">bej_node</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bej__decoder_8c.html#a123662a62b2acdc09f89b255ebc947ca">parse_sflv_init</a> (unsigned char *data, size_t data_len, unsigned char *schema_dictionary)</td></tr>
+<tr class="memdesc:a123662a62b2acdc09f89b255ebc947ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">Initializes the parsing of data into a SFLV structure.  <a href="bej__decoder_8c.html#a123662a62b2acdc09f89b255ebc947ca">More...</a><br /></td></tr>
+<tr class="separator:a123662a62b2acdc09f89b255ebc947ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6b0f831d096531abbe7a329a57a80e24"><td class="memItemLeft" align="right" valign="top">struct <a class="el" href="structdynamic__string.html">dynamic_string</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="bej__decoder_8c.html#a6b0f831d096531abbe7a329a57a80e24">create_dynamic_string</a> (void)</td></tr>
 <tr class="memdesc:a6b0f831d096531abbe7a329a57a80e24"><td class="mdescLeft">&#160;</td><td class="mdescRight">Creates a new dynamic string.  <a href="bej__decoder_8c.html#a6b0f831d096531abbe7a329a57a80e24">More...</a><br /></td></tr>
 <tr class="separator:a6b0f831d096531abbe7a329a57a80e24"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -489,6 +492,45 @@ Functions</h2></td></tr>
 
 </div>
 </div>
+<a id="a39757a447da008a84fd545cb6a571ccd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39757a447da008a84fd545cb6a571ccd">&#9670;&nbsp;</a></span>get_child_pointer_offset_dictionary()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int get_child_pointer_offset_dictionary </td>
+          <td>(</td>
+          <td class="paramtype">struct <a class="el" href="structbej__node.html">bej_node</a> *&#160;</td>
+          <td class="paramname"><em>node</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>schema_dictionary</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Gets the offset of a child node in the schema dictionary. </p>
+<p>This function calculates the offset of a child node in the schema dictionary based on the current node's child pointer offset and sequence. The offset is then used to read an integer from the schema dictionary.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">node</td><td>A pointer to the current BEJ node. </td></tr>
+    <tr><td class="paramname">schema_dictionary</td><td>A pointer to the schema dictionary. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The child pointer offset in the schema dictionary. </dd></dl>
+
+</div>
+</div>
 <a id="a608dc77b7ed16577b157e7bb774537b2"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a608dc77b7ed16577b157e7bb774537b2">&#9670;&nbsp;</a></span>get_key_from_dictionary()</h2>
 
@@ -618,7 +660,7 @@ Functions</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Recursively parses a BEJ node and its children to a string. </p>
-<p>This function recursively parse the BEJ tree and builds a dynamic string. The function distinguishes between different BEJ formats (INTEGER, STRING, ARRAY) and parses them appropriately. For each node, the function appends its key (if present) and value to the dynamic string. In case of ARRAY type, the function recursively processes all child nodes.</p>
+<p>This function recursively parse the BEJ tree and builds a dynamic string. The function distinguishes between different BEJ formats (INTEGER, STRING, ARRAY, SET, BOOLEAN, ENUM) and parses them appropriately. For each node, the function appends its key (if present) and value to the dynamic string. In case of ARRAY and SET types, the function recursively processes all child nodes.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">node</td><td>A pointer to the current BEJ node. </td></tr>
@@ -632,8 +674,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="ad983441c699b8261b6bc1413a0cd0184"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad983441c699b8261b6bc1413a0cd0184">&#9670;&nbsp;</a></span>parse_sflv_init()</h2>
+<a id="a123662a62b2acdc09f89b255ebc947ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a123662a62b2acdc09f89b255ebc947ca">&#9670;&nbsp;</a></span>parse_sflv_init()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -648,7 +690,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>data_len</em>&#160;</td>
+          <td class="paramname"><em>data_len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>schema_dictionary</em>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -671,8 +719,8 @@ Functions</h2></td></tr>
 
 </div>
 </div>
-<a id="a512b0358b77851241f832bcbc707103b"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a512b0358b77851241f832bcbc707103b">&#9670;&nbsp;</a></span>parse_sflv_recursion()</h2>
+<a id="a3e75adb75dcd126dd9bfc9170a141715"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3e75adb75dcd126dd9bfc9170a141715">&#9670;&nbsp;</a></span>parse_sflv_recursion()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -693,7 +741,13 @@ Functions</h2></td></tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>data_len</em>&#160;</td>
+          <td class="paramname"><em>data_len</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char *&#160;</td>
+          <td class="paramname"><em>schema_dictionary</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

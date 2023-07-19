@@ -14,6 +14,8 @@ Include dependency graph for decoder\+\_\+test.\+cpp\+:
 \item 
 unsigned char $\ast$ \mbox{\hyperlink{decoder__test_8cpp_a16240596a4fbfb276b89c199d25f28f8}{hex\+\_\+to\+\_\+bytes}} (const char $\ast$hex)
 \begin{DoxyCompactList}\small\item\em Converts a string of hexadecimal digits into an array of bytes. This function iterates through pairs of characters in the input string, converting each pair from a hexadecimal digit to a byte value using sscanf, and storing the resulting bytes in a dynamically allocated array. \end{DoxyCompactList}\item 
+size\+\_\+t \mbox{\hyperlink{decoder__test_8cpp_a895fbc449ad2e212048b56e21d70b93b}{read\+\_\+file}} (const char $\ast$file\+\_\+path, unsigned char $\ast$$\ast$buffer)
+\begin{DoxyCompactList}\small\item\em Reads a file into a buffer. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{decoder__test_8cpp_a0f118e4d6c99b3fe374147e685dc44d4}{TEST}} (parse\+\_\+\+SFLV\+\_\+init\+\_\+test, returns\+\_\+correct\+\_\+format)
 \begin{DoxyCompactList}\small\item\em This test case checks the function \textquotesingle{}parse\+\_\+sflv\+\_\+init\textquotesingle{} for the correct decoding of format, count, sequence, and dictionary type fields. \end{DoxyCompactList}\item 
 \mbox{\hyperlink{decoder__test_8cpp_ac89a579d637fced036c1d8e17777c942}{TEST}} (parse\+\_\+\+SFLV\+\_\+integer\+\_\+node, returns\+\_\+correct\+\_\+format)
@@ -62,6 +64,28 @@ A pointer to the newly allocated array of bytes. The length of the array is half
 \doxysubsubsection{\texorpdfstring{main()}{main()}}
 {\footnotesize\ttfamily int main (\begin{DoxyParamCaption}\item[{int}]{argc,  }\item[{char $\ast$$\ast$}]{argv }\end{DoxyParamCaption})}
 
+\mbox{\Hypertarget{decoder__test_8cpp_a895fbc449ad2e212048b56e21d70b93b}\label{decoder__test_8cpp_a895fbc449ad2e212048b56e21d70b93b}} 
+\index{decoder\_test.cpp@{decoder\_test.cpp}!read\_file@{read\_file}}
+\index{read\_file@{read\_file}!decoder\_test.cpp@{decoder\_test.cpp}}
+\doxysubsubsection{\texorpdfstring{read\_file()}{read\_file()}}
+{\footnotesize\ttfamily size\+\_\+t read\+\_\+file (\begin{DoxyParamCaption}\item[{const char $\ast$}]{file\+\_\+path,  }\item[{unsigned char $\ast$$\ast$}]{buffer }\end{DoxyParamCaption})}
+
+
+
+Reads a file into a buffer. 
+
+This function reads a file and places its content into a buffer. It handles file opening, size determination, memory allocation for the buffer, and file reading. If there is any error during these operations, it will print an error message and exit.
+
+
+\begin{DoxyParams}{Parameters}
+{\em file\+\_\+path} & The path to the file. \\
+\hline
+{\em buffer} & The pointer to the buffer to fill. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The size of the file. 
+\end{DoxyReturn}
 \mbox{\Hypertarget{decoder__test_8cpp_a01506ecf54bd0b4933c02d7ada569a02}\label{decoder__test_8cpp_a01506ecf54bd0b4933c02d7ada569a02}} 
 \index{decoder\_test.cpp@{decoder\_test.cpp}!TEST@{TEST}}
 \index{TEST@{TEST}!decoder\_test.cpp@{decoder\_test.cpp}}

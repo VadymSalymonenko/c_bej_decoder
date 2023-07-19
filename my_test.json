@@ -1,14 +1,32 @@
 {
-	"DeviceID" : "test",
-	"CapacityMiB" : 800,
-	"AllowedSpeedsMHz" : [
-		2400,
-		3200,
-		3500
-	],
-	"LogicalSizeMiB" : 50,
-	"VolatileSizeMiB" : 12,
-	"DataWidthBits" : 64,
-	"SpareDeviceCount" : 100,
-	"Description" : "newModule"
+  "CapacityMiB": 15820,
+  "DataWidthBits": 50,
+  "DeviceID" : "someID",
+  "AllowedSpeedsMHz": [2400, 3200],
+  "ErrorCorrection": "NoECC",
+  "MemoryLocation": {
+    "Channel": 20,
+    "Slot": 40
+  },
+  "MaxTDPMilliWatts" : [
+	130,
+	150,
+	170,
+	200
+  ],
+  "MemoryType" : "NVDIMM_F",
+  "OperatingSpeedMhz" : 2400,
+  "PartNumber" : "2356A1",
+  "PowerManagementPolicy" : {
+	"AveragePowerBudgetMilliWatts" : 1200,
+	"PeakPowerBudgetMilliWatts" : 3000
+  },
+  "Regions" : [
+	{
+	"MemoryClassification" : "ByteAccessiblePersistent",
+	"PassphraseState" : true,
+	"SizeMiB" : 120,
+	"RegionId" : "ID1254"
+	}
+  ]
 }

@@ -3,7 +3,7 @@ Aplication that implements decoding bej to json.
 
 Features
 
-1. Decoding:  This project is primarily focused on decoding BEJ files into JSON format. Currently, the decoder is capable of translating the compact BEJ format into a human-readable JSON file, specifically handling 'integer', 'string', and 'array' types. In the near future, the functionality will be expanded to cover all possible JSON data types, providing a comprehensive solution for BEJ decoding.
+1. Decoding: This project primarily focuses on decoding BEJ files into JSON format. It's capable of translating the compact BEJ format into a human-readable JSON file, supporting all data types including 'integer', 'string', 'array', and others. This comprehensive decoding solution covers all possible JSON data types, making it a robust tool for BEJ decoding.
 
 2. Error Handling: The decoder is designed to handle different error situations gracefully and provide useful error messages that aid in debugging and troubleshooting.
 

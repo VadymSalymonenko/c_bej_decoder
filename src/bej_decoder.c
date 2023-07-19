@@ -173,6 +173,24 @@ void free_sflv_array(struct bej_node* root)
 }
 
 /**
+ * @brief Gets the offset of a child node in the schema dictionary.
+ *
+ * This function calculates the offset of a child node in the schema dictionary based on the current node's child pointer offset and sequence.
+ * The offset is then used to read an integer from the schema dictionary.
+ *
+ * @param node A pointer to the current BEJ node.
+ * @param schema_dictionary A pointer to the schema dictionary.
+ * @return The child pointer offset in the schema dictionary.
+ */
+
+int get_child_pointer_offset_dictionary (struct bej_node *node, unsigned char *schema_dictionary)
+{
+	unsigned int result_offset = node->child_pointer_offset;
+	result_offset += node->sequence * 10 + 3;
+    return read_int_const_ptr(schema_dictionary + result_offset, 2);
+}
+
+/**
  * @brief Recursively parses data into a SFLV structure.
  *
  * This function will fill all basic fields for bej nodes. 
@@ -185,9 +203,15 @@ void free_sflv_array(struct bej_node* root)
  * @param data_len The length of the data.
  * @return A pointer to the last node created.
  */
-struct bej_node* parse_sflv_recursion(struct bej_node *parent, unsigned char **data, size_t data_len)
+struct bej_node* parse_sflv_recursion(struct bej_node *parent, unsigned char **data, size_t data_len, unsigned char *schema_dictionary)
 {
+	if (data_len == 0) {
+		printf("Error, empty data!\n");
+		exit(0);
+	}
 	int seq = read_length_and_get_int(data);	
+
+
 
 	parent->count = 0;
 	parent->dictionary_type = seq%2;
@@ -212,22 +236,45 @@ struct bej_node* parse_sflv_recursion(struct bej_node *parent, unsigned char **d
 			char *str_ptr = read_str(data,parent->length);
 			parent->value = (void**)str_ptr;		
 			break;
-		} 
+		} 		
 		case ARRAY: 
 		{
 	        parent->count = read_length_and_get_int((data));
 			allocate_sflv_array(parent);
 			for (int i = 0; i < parent->count; i++) {
-				parse_sflv_recursion((struct bej_node *)parent->value[i],data, data_len);
+				struct bej_node * new_node = (struct bej_node *) parent->value[i];
+				new_node->child_pointer_offset = get_child_pointer_offset_dictionary(parent, schema_dictionary);
+				parse_sflv_recursion((struct bej_node *)new_node, data, data_len, schema_dictionary);		
 			}
 			break;
 		}
 		case ENUM: 
 		{
-			parent->count = 1;
+	        parent->count = 1;
+			allocate_sflv_array(parent);
+			
 			int *int_ptr = (int*)malloc(sizeof(int)); 
-			*int_ptr = read_int(data,parent->length); // TODO: make a function that simply writes several bytes in a direct sequence without the \0 terminator
-			parent->value = (void**)int_ptr;
+			*int_ptr = read_length_and_get_int(data);	
+			parent->value = (void**)int_ptr;	
+			
+			struct bej_node * new_str_node = (struct bej_node *)malloc(sizeof(struct bej_node));
+			new_str_node->format = STRING;
+			new_str_node->sequence = (int)*(parent->value);
+			new_str_node->dictionary_type = parent->dictionary_type;
+			new_str_node->child_pointer_offset = get_child_pointer_offset_dictionary(parent, schema_dictionary);			
+			
+			parent->value[0] = (char*) new_str_node;
+			break;	
+		}
+		case SET: 
+		{
+	        parent->count = read_length_and_get_int((data));
+			allocate_sflv_array(parent);
+			for (int i = 0; i < parent->count; i++) {
+				struct bej_node * new_node = (struct bej_node *) parent->value[i];
+				new_node->child_pointer_offset = get_child_pointer_offset_dictionary(parent, schema_dictionary);
+				parse_sflv_recursion((struct bej_node *)new_node, data, data_len, schema_dictionary);
+			}
 			break;
 		}
 	}	
@@ -245,26 +292,27 @@ struct bej_node* parse_sflv_recursion(struct bej_node *parent, unsigned char **d
  * @param data_len The length of the data.
  * @return A pointer to the root node.
  */
-struct bej_node* parse_sflv_init(unsigned char *data, size_t data_len)
+struct bej_node* parse_sflv_init(unsigned char *data, size_t data_len, unsigned char *schema_dictionary)
 {	
 	struct bej_node *root = (struct bej_node *)malloc(sizeof(struct bej_node));
 	unsigned char **data_ptr = &data;
 	
 	advance_ptr(data_ptr,12);
+	
 	root->count = read_length_and_get_int((data_ptr));
-
-	root->dictionary_type = 255;
-	root->sequence = 255;
-	root->format = ARRAY;
-	root->length = 255;
+	root->dictionary_type = 0;
+	root->sequence = 0;
+	root->format = SET;
+	root->length = 0;
+	root->child_pointer_offset = 12;
 	
 	allocate_sflv_array(root);
 	for (int i = 0; i < root->count; i++) {
-		parse_sflv_recursion((struct bej_node *)root->value[i],data_ptr, data_len);
+		struct bej_node * new_node = (struct bej_node *) root->value[i];
+		new_node->child_pointer_offset = get_child_pointer_offset_dictionary(root, schema_dictionary);
+		parse_sflv_recursion((struct bej_node *)new_node, data_ptr, data_len, schema_dictionary);
 	}
-	
-	//free(node);
-	
+		
     return root;
 }
 
@@ -347,26 +395,18 @@ void append_char(struct dynamic_string* str, char c)
  * @return A string representing the key.
  */
 char* get_key_from_dictionary (struct bej_node *node, unsigned char *schema_dictionary)
-{
-	unsigned char node_sequence = node->sequence;
-	unsigned char *schema_dictionary_start_point = schema_dictionary;
-    char* node_name;
-	char* result;
-	int entries_count = read_int_const_ptr(schema_dictionary+2, 2); // schema_dictionary offset for EntryCount = 2, EntryCount size = 2 bytes
-			
-	// TODO: replace cycle with offset search using node_sequence
-	schema_dictionary += 13; // offset for first SequenceNumber
-	for (int i = 0; i < entries_count; i++) {
-		if (node_sequence == read_int_const_ptr(schema_dictionary, 2)) {
-			unsigned char name_length = (char)read_int_const_ptr(schema_dictionary+6, 1);
-			unsigned int name_offset = read_int_const_ptr(schema_dictionary+7, 2);
+{	
+	unsigned char *schema_dictionary_start_point = schema_dictionary;	
+	unsigned int result_offset = node->child_pointer_offset;
+	unsigned char name_length;
+	unsigned int name_offset;
+	
+	result_offset += node->sequence * 10;
+	schema_dictionary += result_offset;
+	name_length = (char)read_int_const_ptr(schema_dictionary+7, 1);
+	name_offset = read_int_const_ptr(schema_dictionary+8, 2);
 
-			result = read_str_const_ptr(schema_dictionary_start_point + name_offset, name_length);
-			break;
-		}
-		schema_dictionary += 10;
-	}
-    return result;
+    return read_str_const_ptr(schema_dictionary_start_point + name_offset, name_length);
 }
 
 /**
@@ -381,8 +421,9 @@ char* get_key_from_dictionary (struct bej_node *node, unsigned char *schema_dict
  */
 void add_node_key_to_str(struct bej_node *node, struct dynamic_string* str, unsigned char *schema_dictionary)
 {
-	append_char(str, '"');
 	char* node_name = get_key_from_dictionary(node, schema_dictionary);
+	if (strcmp(node_name, "") == 0)return;
+	append_char(str, '"');
 	append_string(str, node_name);
 	append_string(str, "\" : ");
 	free(node_name);
@@ -404,9 +445,9 @@ void add_tab(struct dynamic_string* str, int count)
  * @brief Recursively parses a BEJ node and its children to a string.
  *
  * This function recursively parse the BEJ tree and builds a dynamic string.
- * The function distinguishes between different BEJ formats (INTEGER, STRING, ARRAY) and parses them appropriately.
+ * The function distinguishes between different BEJ formats (INTEGER, STRING, ARRAY, SET, BOOLEAN, ENUM) and parses them appropriately.
  * For each node, the function appends its key (if present) and value to the dynamic string.
- * In case of ARRAY type, the function recursively processes all child nodes.
+ * In case of ARRAY and SET types, the function recursively processes all child nodes.
  *
  * @param node A pointer to the current BEJ node.
  * @param str A pointer to the dynamic string.
@@ -431,6 +472,7 @@ void parse_bej_node_to_str_recursion(struct bej_node *node, struct dynamic_strin
 				free(node);
 				break;
 			}
+			
 			case STRING: 
 				append_char(str, '"');
 				append_string(str, (char*)node->value);
@@ -452,25 +494,42 @@ void parse_bej_node_to_str_recursion(struct bej_node *node, struct dynamic_strin
 	} else {
 		switch (node->format) {
 			case ARRAY: 
-				if (node->sequence == 255) {
-					parse_type = WITH_KEY;
-				} else {
-					parse_type = WITHOUT_KEY;
 					add_node_key_to_str(node, str, schema_dictionary);
 					append_string(str, "[\n");
-				}
 				for (int i = 0; i < node->count; i++) {
 					add_tab(str, recursion_depth);
 					parse_bej_node_to_str_recursion((struct bej_node *)node->value[i], str, 
-									parse_type,recursion_depth, schema_dictionary);
-					if(i < node->count-1)append_string(str, ",\n");
-					if(i == node->count-1)append_string(str, "\n");
+									WITHOUT_KEY,recursion_depth, schema_dictionary);
+					if (i < node->count-1)append_string(str, ",\n");
+					if (i == node->count-1)append_string(str, "\n");
 				}
-				if (node->sequence != 255) {
 					add_tab(str, recursion_depth-1);
 					append_string(str, "]");
-				}
 				free(node->value);
+				break;
+			case SET: 
+				if (node->child_pointer_offset != 12)
+					add_node_key_to_str(node, str, schema_dictionary);
+				append_string(str, "{\n");
+				for (int i = 0; i < node->count; i++) {
+					add_tab(str, recursion_depth);
+					parse_bej_node_to_str_recursion((struct bej_node *)node->value[i], str, 
+									WITH_KEY,recursion_depth, schema_dictionary);
+					if (i < node->count-1)append_string(str, ",\n");
+					if (i == node->count-1)append_string(str, "\n");
+				}
+				add_tab(str, recursion_depth-1);
+				append_string(str, "}");
+			break;
+			case ENUM: 
+				add_node_key_to_str(node, str, schema_dictionary);
+
+				struct bej_node * new_str_node = (struct bej_node *) node->value[0];
+				append_char(str, '"');
+				append_string(str, get_key_from_dictionary(new_str_node, schema_dictionary));
+				append_char(str, '"');
+				free(node->value);
+
 				break;
 		}
 	}
@@ -488,9 +547,8 @@ void parse_bej_node_to_str_recursion(struct bej_node *node, struct dynamic_strin
  */
 void parse_bej_node_to_str(struct bej_node *root, struct dynamic_string* str, unsigned char *schema_dictionary)
 {
-	append_string(str, "{\n");
 	parse_bej_node_to_str_recursion(root, str, WITH_KEY, 0, schema_dictionary);
-	append_string(str, "}");
+	free(root);
 }
 
 /**
@@ -515,7 +573,7 @@ struct dynamic_string* decode_bej(unsigned char *data, size_t data_len,
 	struct bej_node *root;
     struct dynamic_string* str = create_dynamic_string();
 	
-	root = parse_sflv_init(data, data_len);
+	root = parse_sflv_init(data, data_len, schema_dictionary);
 	parse_bej_node_to_str(root, str, schema_dictionary);
 	
     return str;

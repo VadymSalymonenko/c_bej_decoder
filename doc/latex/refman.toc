@@ -21,14 +21,15 @@
 \contentsline {section}{\numberline {4.2}bej\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}node Struct Reference}{9}{section.4.2}%
 \contentsline {subsection}{\numberline {4.2.1}Detailed Description}{10}{subsection.4.2.1}%
 \contentsline {subsection}{\numberline {4.2.2}Field Documentation}{10}{subsection.4.2.2}%
-\contentsline {subsubsection}{\numberline {4.2.2.1}count}{10}{subsubsection.4.2.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.2.2}dictionary\_type}{10}{subsubsection.4.2.2.2}%
-\contentsline {subsubsection}{\numberline {4.2.2.3}format}{10}{subsubsection.4.2.2.3}%
-\contentsline {subsubsection}{\numberline {4.2.2.4}length}{11}{subsubsection.4.2.2.4}%
-\contentsline {subsubsection}{\numberline {4.2.2.5}sequence}{11}{subsubsection.4.2.2.5}%
-\contentsline {subsubsection}{\numberline {4.2.2.6}value}{11}{subsubsection.4.2.2.6}%
+\contentsline {subsubsection}{\numberline {4.2.2.1}child\_pointer\_offset}{10}{subsubsection.4.2.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2.2}count}{10}{subsubsection.4.2.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.3}dictionary\_type}{10}{subsubsection.4.2.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.2.4}format}{11}{subsubsection.4.2.2.4}%
+\contentsline {subsubsection}{\numberline {4.2.2.5}length}{11}{subsubsection.4.2.2.5}%
+\contentsline {subsubsection}{\numberline {4.2.2.6}sequence}{11}{subsubsection.4.2.2.6}%
+\contentsline {subsubsection}{\numberline {4.2.2.7}value}{11}{subsubsection.4.2.2.7}%
 \contentsline {section}{\numberline {4.3}dynamic\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}\_\discretionary {\mbox {\scriptsize $\hookleftarrow $}}{}{}string Struct Reference}{11}{section.4.3}%
-\contentsline {subsection}{\numberline {4.3.1}Detailed Description}{11}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.1}Detailed Description}{12}{subsection.4.3.1}%
 \contentsline {subsection}{\numberline {4.3.2}Field Documentation}{12}{subsection.4.3.2}%
 \contentsline {subsubsection}{\numberline {4.3.2.1}capacity}{12}{subsubsection.4.3.2.1}%
 \contentsline {subsubsection}{\numberline {4.3.2.2}data}{12}{subsubsection.4.3.2.2}%
@@ -57,8 +58,9 @@
 \contentsline {subsection}{\numberline {5.4.2}Function Documentation}{19}{subsection.5.4.2}%
 \contentsline {subsubsection}{\numberline {5.4.2.1}hex\_to\_bytes()}{19}{subsubsection.5.4.2.1}%
 \contentsline {subsubsection}{\numberline {5.4.2.2}main()}{20}{subsubsection.5.4.2.2}%
-\contentsline {subsubsection}{\numberline {5.4.2.3}TEST()\hspace {0.1cm}{\footnotesize \ttfamily [1/5]}}{20}{subsubsection.5.4.2.3}%
-\contentsline {subsubsection}{\numberline {5.4.2.4}TEST()\hspace {0.1cm}{\footnotesize \ttfamily [2/5]}}{20}{subsubsection.5.4.2.4}%
-\contentsline {subsubsection}{\numberline {5.4.2.5}TEST()\hspace {0.1cm}{\footnotesize \ttfamily [3/5]}}{20}{subsubsection.5.4.2.5}%
-\contentsline {subsubsection}{\numberline {5.4.2.6}TEST()\hspace {0.1cm}{\footnotesize \ttfamily [4/5]}}{21}{subsubsection.5.4.2.6}%
-\contentsline {subsubsection}{\numberline {5.4.2.7}TEST()\hspace {0.1cm}{\footnotesize \ttfamily [5/5]}}{21}{subsubsection.5.4.2.7}%
+\contentsline {subsubsection}{\numberline {5.4.2.3}read\_file()}{20}{subsubsection.5.4.2.3}%
+\contentsline {subsubsection}{\numberline {5.4.2.4}TEST()\hspace {0.1cm}{\footnotesize \ttfamily [1/5]}}{20}{subsubsection.5.4.2.4}%
+\contentsline {subsubsection}{\numberline {5.4.2.5}TEST()\hspace {0.1cm}{\footnotesize \ttfamily [2/5]}}{21}{subsubsection.5.4.2.5}%
+\contentsline {subsubsection}{\numberline {5.4.2.6}TEST()\hspace {0.1cm}{\footnotesize \ttfamily [3/5]}}{21}{subsubsection.5.4.2.6}%
+\contentsline {subsubsection}{\numberline {5.4.2.7}TEST()\hspace {0.1cm}{\footnotesize \ttfamily [4/5]}}{21}{subsubsection.5.4.2.7}%
+\contentsline {subsubsection}{\numberline {5.4.2.8}TEST()\hspace {0.1cm}{\footnotesize \ttfamily [5/5]}}{21}{subsubsection.5.4.2.8}%

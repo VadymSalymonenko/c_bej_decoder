@@ -90,6 +90,9 @@ Functions</h2></td></tr>
 <tr class="memitem:a16240596a4fbfb276b89c199d25f28f8"><td class="memItemLeft" align="right" valign="top">unsigned char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decoder__test_8cpp.html#a16240596a4fbfb276b89c199d25f28f8">hex_to_bytes</a> (const char *hex)</td></tr>
 <tr class="memdesc:a16240596a4fbfb276b89c199d25f28f8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Converts a string of hexadecimal digits into an array of bytes. This function iterates through pairs of characters in the input string, converting each pair from a hexadecimal digit to a byte value using sscanf, and storing the resulting bytes in a dynamically allocated array.  <a href="decoder__test_8cpp.html#a16240596a4fbfb276b89c199d25f28f8">More...</a><br /></td></tr>
 <tr class="separator:a16240596a4fbfb276b89c199d25f28f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a895fbc449ad2e212048b56e21d70b93b"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decoder__test_8cpp.html#a895fbc449ad2e212048b56e21d70b93b">read_file</a> (const char *file_path, unsigned char **buffer)</td></tr>
+<tr class="memdesc:a895fbc449ad2e212048b56e21d70b93b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reads a file into a buffer.  <a href="decoder__test_8cpp.html#a895fbc449ad2e212048b56e21d70b93b">More...</a><br /></td></tr>
+<tr class="separator:a895fbc449ad2e212048b56e21d70b93b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0f118e4d6c99b3fe374147e685dc44d4"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="decoder__test_8cpp.html#a0f118e4d6c99b3fe374147e685dc44d4">TEST</a> (parse_SFLV_init_test, returns_correct_format)</td></tr>
 <tr class="memdesc:a0f118e4d6c99b3fe374147e685dc44d4"><td class="mdescLeft">&#160;</td><td class="mdescRight">This test case checks the function 'parse_sflv_init' for the correct decoding of format, count, sequence, and dictionary type fields.  <a href="decoder__test_8cpp.html#a0f118e4d6c99b3fe374147e685dc44d4">More...</a><br /></td></tr>
 <tr class="separator:a0f118e4d6c99b3fe374147e685dc44d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -176,6 +179,45 @@ Functions</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a895fbc449ad2e212048b56e21d70b93b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a895fbc449ad2e212048b56e21d70b93b">&#9670;&nbsp;</a></span>read_file()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">size_t read_file </td>
+          <td>(</td>
+          <td class="paramtype">const char *&#160;</td>
+          <td class="paramname"><em>file_path</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">unsigned char **&#160;</td>
+          <td class="paramname"><em>buffer</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Reads a file into a buffer. </p>
+<p>This function reads a file and places its content into a buffer. It handles file opening, size determination, memory allocation for the buffer, and file reading. If there is any error during these operations, it will print an error message and exit.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">file_path</td><td>The path to the file. </td></tr>
+    <tr><td class="paramname">buffer</td><td>The pointer to the buffer to fill. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The size of the file. </dd></dl>
 
 </div>
 </div>

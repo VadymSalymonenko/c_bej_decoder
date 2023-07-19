@@ -25,9 +25,11 @@ void \mbox{\hyperlink{bej__decoder_8c_a6e0d2c4f1ff21290a6e91538ece132c4}{allocat
 \begin{DoxyCompactList}\small\item\em Allocates memory for an array of pointers to SFLV structures. \end{DoxyCompactList}\item 
 void \mbox{\hyperlink{bej__decoder_8c_ad3527bde59a731fd8c6fa4358caac455}{free\+\_\+sflv\+\_\+array}} (struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$root)
 \begin{DoxyCompactList}\small\item\em Frees memory of an array of pointers to SFLV structures. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$ \mbox{\hyperlink{bej__decoder_8c_a512b0358b77851241f832bcbc707103b}{parse\+\_\+sflv\+\_\+recursion}} (struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$parent, unsigned char $\ast$$\ast$data, size\+\_\+t data\+\_\+len)
+int \mbox{\hyperlink{bej__decoder_8c_a39757a447da008a84fd545cb6a571ccd}{get\+\_\+child\+\_\+pointer\+\_\+offset\+\_\+dictionary}} (struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$node, unsigned char $\ast$schema\+\_\+dictionary)
+\begin{DoxyCompactList}\small\item\em Gets the offset of a child node in the schema dictionary. \end{DoxyCompactList}\item 
+struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$ \mbox{\hyperlink{bej__decoder_8c_a3e75adb75dcd126dd9bfc9170a141715}{parse\+\_\+sflv\+\_\+recursion}} (struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$parent, unsigned char $\ast$$\ast$data, size\+\_\+t data\+\_\+len, unsigned char $\ast$schema\+\_\+dictionary)
 \begin{DoxyCompactList}\small\item\em Recursively parses data into a SFLV structure. \end{DoxyCompactList}\item 
-struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$ \mbox{\hyperlink{bej__decoder_8c_ad983441c699b8261b6bc1413a0cd0184}{parse\+\_\+sflv\+\_\+init}} (unsigned char $\ast$data, size\+\_\+t data\+\_\+len)
+struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$ \mbox{\hyperlink{bej__decoder_8c_a123662a62b2acdc09f89b255ebc947ca}{parse\+\_\+sflv\+\_\+init}} (unsigned char $\ast$data, size\+\_\+t data\+\_\+len, unsigned char $\ast$schema\+\_\+dictionary)
 \begin{DoxyCompactList}\small\item\em Initializes the parsing of data into a SFLV structure. \end{DoxyCompactList}\item 
 struct \mbox{\hyperlink{structdynamic__string}{dynamic\+\_\+string}} $\ast$ \mbox{\hyperlink{bej__decoder_8c_a6b0f831d096531abbe7a329a57a80e24}{create\+\_\+dynamic\+\_\+string}} (void)
 \begin{DoxyCompactList}\small\item\em Creates a new dynamic string. \end{DoxyCompactList}\item 
@@ -204,7 +206,29 @@ A pointer to the dynamic string holding the decoded data.
 
 Frees memory of an array of pointers to SFLV structures. 
 
-This function frees the memory of each SFLV structure and the array of pointers. \mbox{\Hypertarget{bej__decoder_8c_a608dc77b7ed16577b157e7bb774537b2}\label{bej__decoder_8c_a608dc77b7ed16577b157e7bb774537b2}} 
+This function frees the memory of each SFLV structure and the array of pointers. \mbox{\Hypertarget{bej__decoder_8c_a39757a447da008a84fd545cb6a571ccd}\label{bej__decoder_8c_a39757a447da008a84fd545cb6a571ccd}} 
+\index{bej\_decoder.c@{bej\_decoder.c}!get\_child\_pointer\_offset\_dictionary@{get\_child\_pointer\_offset\_dictionary}}
+\index{get\_child\_pointer\_offset\_dictionary@{get\_child\_pointer\_offset\_dictionary}!bej\_decoder.c@{bej\_decoder.c}}
+\doxysubsubsection{\texorpdfstring{get\_child\_pointer\_offset\_dictionary()}{get\_child\_pointer\_offset\_dictionary()}}
+{\footnotesize\ttfamily int get\+\_\+child\+\_\+pointer\+\_\+offset\+\_\+dictionary (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$}]{node,  }\item[{unsigned char $\ast$}]{schema\+\_\+dictionary }\end{DoxyParamCaption})}
+
+
+
+Gets the offset of a child node in the schema dictionary. 
+
+This function calculates the offset of a child node in the schema dictionary based on the current node\textquotesingle{}s child pointer offset and sequence. The offset is then used to read an integer from the schema dictionary.
+
+
+\begin{DoxyParams}{Parameters}
+{\em node} & A pointer to the current BEJ node. \\
+\hline
+{\em schema\+\_\+dictionary} & A pointer to the schema dictionary. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The child pointer offset in the schema dictionary. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{bej__decoder_8c_a608dc77b7ed16577b157e7bb774537b2}\label{bej__decoder_8c_a608dc77b7ed16577b157e7bb774537b2}} 
 \index{bej\_decoder.c@{bej\_decoder.c}!get\_key\_from\_dictionary@{get\_key\_from\_dictionary}}
 \index{get\_key\_from\_dictionary@{get\_key\_from\_dictionary}!bej\_decoder.c@{bej\_decoder.c}}
 \doxysubsubsection{\texorpdfstring{get\_key\_from\_dictionary()}{get\_key\_from\_dictionary()}}
@@ -257,7 +281,7 @@ This function initializes the parsing of the BEJ tree by starting from the root 
 
 Recursively parses a BEJ node and its children to a string. 
 
-This function recursively parse the BEJ tree and builds a dynamic string. The function distinguishes between different BEJ formats (INTEGER, STRING, ARRAY) and parses them appropriately. For each node, the function appends its key (if present) and value to the dynamic string. In case of ARRAY type, the function recursively processes all child nodes.
+This function recursively parse the BEJ tree and builds a dynamic string. The function distinguishes between different BEJ formats (INTEGER, STRING, ARRAY, SET, BOOLEAN, ENUM) and parses them appropriately. For each node, the function appends its key (if present) and value to the dynamic string. In case of ARRAY and SET types, the function recursively processes all child nodes.
 
 
 \begin{DoxyParams}{Parameters}
@@ -272,11 +296,11 @@ This function recursively parse the BEJ tree and builds a dynamic string. The fu
 {\em schema\+\_\+dictionary} & A pointer to the schema dictionary. \\
 \hline
 \end{DoxyParams}
-\mbox{\Hypertarget{bej__decoder_8c_ad983441c699b8261b6bc1413a0cd0184}\label{bej__decoder_8c_ad983441c699b8261b6bc1413a0cd0184}} 
+\mbox{\Hypertarget{bej__decoder_8c_a123662a62b2acdc09f89b255ebc947ca}\label{bej__decoder_8c_a123662a62b2acdc09f89b255ebc947ca}} 
 \index{bej\_decoder.c@{bej\_decoder.c}!parse\_sflv\_init@{parse\_sflv\_init}}
 \index{parse\_sflv\_init@{parse\_sflv\_init}!bej\_decoder.c@{bej\_decoder.c}}
 \doxysubsubsection{\texorpdfstring{parse\_sflv\_init()}{parse\_sflv\_init()}}
-{\footnotesize\ttfamily struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}}$\ast$ parse\+\_\+sflv\+\_\+init (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{data,  }\item[{size\+\_\+t}]{data\+\_\+len }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}}$\ast$ parse\+\_\+sflv\+\_\+init (\begin{DoxyParamCaption}\item[{unsigned char $\ast$}]{data,  }\item[{size\+\_\+t}]{data\+\_\+len,  }\item[{unsigned char $\ast$}]{schema\+\_\+dictionary }\end{DoxyParamCaption})}
 
 
 
@@ -294,11 +318,11 @@ This is an initial function to prepare for recursion. Function allocates memory 
 \begin{DoxyReturn}{Returns}
 A pointer to the root node. 
 \end{DoxyReturn}
-\mbox{\Hypertarget{bej__decoder_8c_a512b0358b77851241f832bcbc707103b}\label{bej__decoder_8c_a512b0358b77851241f832bcbc707103b}} 
+\mbox{\Hypertarget{bej__decoder_8c_a3e75adb75dcd126dd9bfc9170a141715}\label{bej__decoder_8c_a3e75adb75dcd126dd9bfc9170a141715}} 
 \index{bej\_decoder.c@{bej\_decoder.c}!parse\_sflv\_recursion@{parse\_sflv\_recursion}}
 \index{parse\_sflv\_recursion@{parse\_sflv\_recursion}!bej\_decoder.c@{bej\_decoder.c}}
 \doxysubsubsection{\texorpdfstring{parse\_sflv\_recursion()}{parse\_sflv\_recursion()}}
-{\footnotesize\ttfamily struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}}$\ast$ parse\+\_\+sflv\+\_\+recursion (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$}]{parent,  }\item[{unsigned char $\ast$$\ast$}]{data,  }\item[{size\+\_\+t}]{data\+\_\+len }\end{DoxyParamCaption})}
+{\footnotesize\ttfamily struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}}$\ast$ parse\+\_\+sflv\+\_\+recursion (\begin{DoxyParamCaption}\item[{struct \mbox{\hyperlink{structbej__node}{bej\+\_\+node}} $\ast$}]{parent,  }\item[{unsigned char $\ast$$\ast$}]{data,  }\item[{size\+\_\+t}]{data\+\_\+len,  }\item[{unsigned char $\ast$}]{schema\+\_\+dictionary }\end{DoxyParamCaption})}
 
 
 

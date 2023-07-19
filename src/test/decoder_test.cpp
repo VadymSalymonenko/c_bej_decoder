@@ -29,6 +29,48 @@ unsigned char* hex_to_bytes(const char* hex)
 }
 
 /**
+ * @brief Reads a file into a buffer.
+ *
+ * This function reads a file and places its content into a buffer. It handles file
+ * opening, size determination, memory allocation for the buffer, and file reading. 
+ * If there is any error during these operations, it will print an error message and exit.
+ *
+ * @param file_path The path to the file.
+ * @param buffer The pointer to the buffer to fill.
+ * @return The size of the file.
+ */
+size_t read_file(const char *file_path, unsigned char **buffer)
+{
+    FILE *file = fopen(file_path, "rb");
+    if (file == NULL) {
+        fprintf(stderr, "Failed to open file: %s\n", file_path);
+        exit(1);
+    }
+
+    // Determine the file size
+    fseek(file, 0, SEEK_END);
+    size_t file_size = ftell(file);
+    rewind(file);
+
+    // Allocate memory for the buffer
+    *buffer = (unsigned char*) malloc(file_size);
+    if (*buffer == NULL) {
+        fprintf(stderr, "Failed to allocate memory for reading file: %s\n", file_path);
+        exit(1);
+    }
+
+    // Read the file into the buffer
+    size_t read_size = fread(*buffer, 1, file_size, file);
+    if (read_size != file_size) {
+        fprintf(stderr, "Failed to read file: %s\n", file_path);
+        exit(1);
+    }
+
+    fclose(file);
+    return file_size;
+}
+
+/**
  * @test parse_SFLV_init_test_returns_correct_format
  * @brief This test case checks the function 'parse_sflv_init' for the correct 
  * decoding of format, count, sequence, and dictionary type fields.
@@ -45,13 +87,15 @@ TEST(parse_SFLV_init_test, returns_correct_format)
     const char* data_hex = "00f0f0f1000000010000010a0101010830010140";
     unsigned char* data = hex_to_bytes(data_hex);
     size_t data_len = strlen(data_hex)/2;
+	unsigned char *schema_dictionary;
+    read_file("../../DSP8010_2023_1/dictionaries/Memory_v1.bin", &schema_dictionary);
 
-    struct bej_node* result = parse_sflv_init(data, data_len);
+    struct bej_node* result = parse_sflv_init(data, data_len, schema_dictionary);
     
-    EXPECT_EQ(result->format, 0x10);
+    EXPECT_EQ(result->format, 0x00);
     EXPECT_EQ(result->count, 1);  
-    EXPECT_EQ(result->sequence, 255);  
-    EXPECT_EQ(result->dictionary_type, 255);  
+    EXPECT_EQ(result->sequence, 0);  
+    EXPECT_EQ(result->dictionary_type, 0);  
 
     free(result);
     free(data);
@@ -73,8 +117,10 @@ TEST(parse_SFLV_integer_node, returns_correct_format)
     const char* data_hex = "00f0f0f1000000010000011001020108300103000001010a30010140";
     unsigned char* data = hex_to_bytes(data_hex);
     size_t data_len = strlen(data_hex)/2;
+	unsigned char *schema_dictionary;
+    read_file("../../DSP8010_2023_1/dictionaries/Memory_v1.bin", &schema_dictionary);
 
-    struct bej_node* result = parse_sflv_init(data, data_len);
+    struct bej_node* result = parse_sflv_init(data, data_len, schema_dictionary);
 
     if (result->count >= 2) {
         struct bej_node* second_element = (struct bej_node*)result->value[1];

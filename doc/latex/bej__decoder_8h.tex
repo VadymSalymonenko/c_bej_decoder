@@ -23,10 +23,14 @@ struct \mbox{\hyperlink{structdynamic__string}{dynamic\+\_\+string}}
 \doxysubsection*{Enumerations}
 \begin{DoxyCompactItemize}
 \item 
-enum \mbox{\hyperlink{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aa}{data\+\_\+types}} \{ \mbox{\hyperlink{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaa5a063e265d2ac903b6808e9f6e73ec46}{INTEGER}} = 0x30
+enum \mbox{\hyperlink{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aa}{data\+\_\+types}} \{ \newline
+\mbox{\hyperlink{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaa8a583f16e8d237a423c8c1d9087a4c72}{BOOLEAN}} = 0x70
+, \mbox{\hyperlink{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaa5a063e265d2ac903b6808e9f6e73ec46}{INTEGER}} = 0x30
 , \mbox{\hyperlink{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaa5bc38f5ef3a09fbc02c3f3576277a5b9}{ENUM}} = 0x40
 , \mbox{\hyperlink{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaaee847e634a4297b274316de8a8ca9921}{STRING}} = 0x50
-, \mbox{\hyperlink{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaa1e029fbf0c881b85d80fc8e89b753688}{ARRAY}} = 0x10
+, \newline
+\mbox{\hyperlink{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaa1e029fbf0c881b85d80fc8e89b753688}{ARRAY}} = 0x10
+, \mbox{\hyperlink{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaab44c8101cc294c074709ec1b14211792}{SET}} = 0x00
  \}
 \begin{DoxyCompactList}\small\item\em Defines the types of data in the BEJ format. \end{DoxyCompactList}\item 
 enum \mbox{\hyperlink{bej__decoder_8h_a45a5522f200654792e28fdcb567e58a7}{bej\+\_\+node\+\_\+to\+\_\+str\+\_\+types}} \{ \mbox{\hyperlink{bej__decoder_8h_a45a5522f200654792e28fdcb567e58a7ae6d04f9bb1cc93e6cbac2b11b95241c3}{WITH\+\_\+\+KEY}}
@@ -87,6 +91,10 @@ WITHOUT\+\_\+\+KEY&\\
 Defines the types of data in the BEJ format. 
 
 This enum lists the different types of data that can be present in BEJ. Currently, it includes INTEGER, ENUM, STRING, and ARRAY. \begin{DoxyEnumFields}{Enumerator}
+\raisebox{\heightof{T}}[0pt][0pt]{\index{BOOLEAN@{BOOLEAN}!bej\_decoder.h@{bej\_decoder.h}}\index{bej\_decoder.h@{bej\_decoder.h}!BOOLEAN@{BOOLEAN}}}\mbox{\Hypertarget{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaa8a583f16e8d237a423c8c1d9087a4c72}\label{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaa8a583f16e8d237a423c8c1d9087a4c72}} 
+BOOLEAN&\\
+\hline
+
 \raisebox{\heightof{T}}[0pt][0pt]{\index{INTEGER@{INTEGER}!bej\_decoder.h@{bej\_decoder.h}}\index{bej\_decoder.h@{bej\_decoder.h}!INTEGER@{INTEGER}}}\mbox{\Hypertarget{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaa5a063e265d2ac903b6808e9f6e73ec46}\label{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaa5a063e265d2ac903b6808e9f6e73ec46}} 
 INTEGER&\\
 \hline
@@ -101,6 +109,10 @@ STRING&\\
 
 \raisebox{\heightof{T}}[0pt][0pt]{\index{ARRAY@{ARRAY}!bej\_decoder.h@{bej\_decoder.h}}\index{bej\_decoder.h@{bej\_decoder.h}!ARRAY@{ARRAY}}}\mbox{\Hypertarget{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaa1e029fbf0c881b85d80fc8e89b753688}\label{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaa1e029fbf0c881b85d80fc8e89b753688}} 
 ARRAY&\\
+\hline
+
+\raisebox{\heightof{T}}[0pt][0pt]{\index{SET@{SET}!bej\_decoder.h@{bej\_decoder.h}}\index{bej\_decoder.h@{bej\_decoder.h}!SET@{SET}}}\mbox{\Hypertarget{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaab44c8101cc294c074709ec1b14211792}\label{bej__decoder_8h_aee7544e5fa6e2843ecdc3609602e56aaab44c8101cc294c074709ec1b14211792}} 
+SET&\\
 \hline
 
 \end{DoxyEnumFields}
